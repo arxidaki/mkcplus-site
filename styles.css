@@ -1,0 +1,660 @@
+@font-face {
+  font-family: "MKC Interface";
+  src: url("./assets/fonts/inter-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: Outfit;
+  src: url("./assets/fonts/outfit.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+}
+:root {
+  color-scheme: dark;
+  --p-bg: #191e27;
+  --p-panel: #252c38;
+  --p-text: #edf2fc;
+  --p-muted: #a4b2c8;
+  --p-line: #3b4555;
+  --p-accent: #8ab4ff;
+  --p-selected: #303f5c;
+  --p-dot: #374152;
+  --p-hover: #1c232d;
+  font-family: "MKC Interface", sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  font-synthesis: none;
+  font-kerning: normal;
+  font-optical-sizing: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: var(--p-text);
+  background: var(--p-bg);
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --p-bg: #ccd4d0;
+  --p-panel: #d8ded8;
+  --p-text: #28384a;
+  --p-muted: #617185;
+  --p-line: #ced8e2;
+  --p-accent: #d4af37;
+  --p-selected: #fdf0c8;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; min-height: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+svg { width: 17px; height: 17px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* These surface layers match the app's p-window background */
+.p-window {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--p-bg);
+  background-image:
+    radial-gradient(var(--p-dot) 0.65px, transparent 0.65px),
+    radial-gradient(ellipse at 50% 45%, #29416622, transparent 70%);
+  background-size: 18px 18px, 100% 100%;
+}
+:root[data-theme="light"] .p-window {
+  background-color: #657572;
+  background-image:
+    radial-gradient(circle, #7c965099 0.8px, transparent 1px),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><g fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='1.5' transform='translate(1.2,1.2)'><path d='M120 40L150 90L138 150L170 210L158 270'/><path d='M420 120L380 170L395 230L360 290'/></g><g fill='none' stroke='%232f3a38' stroke-opacity='0.14' stroke-width='1.5'><path d='M120 40L150 90L138 150L170 210L158 270'/><path d='M420 120L380 170L395 230L360 290'/></g></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='g' x='0%' y='0%' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' seed='19' stitchTiles='stitch'/><feColorMatrix type='matrix' values='.2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 0 0 0 0 1'/><feComponentTransfer><feFuncR type='linear' slope='0.4' intercept='0.3'/><feFuncG type='linear' slope='0.4' intercept='0.3'/><feFuncB type='linear' slope='0.4' intercept='0.3'/></feComponentTransfer></filter><rect width='120' height='120' filter='url(%23g)'/></svg>"),
+    radial-gradient(ellipse at 16% 22%, rgb(219 230 212 / 0.10), transparent 54%),
+    radial-gradient(ellipse at 80% 70%, rgb(22 42 40 / 0.15), transparent 62%),
+    radial-gradient(ellipse at 45% 80%, rgb(175 180 148 / 0.06), transparent 46%);
+  background-blend-mode: normal, normal, soft-light, normal, normal, normal;
+  background-size: 18px 18px, 600px 400px, 120px 120px, 100% 100%, 100% 100%, 100% 100%;
+  background-repeat: repeat, repeat, repeat, no-repeat, no-repeat, no-repeat;
+}
+/* App toolbar geometry, translucency and brand dimensions */
+.p-titlebar {
+  display: flex;
+  align-items: center;
+  flex: 0 0 64px;
+  padding: 12px 18px;
+  gap: 22px;
+  background: color-mix(in srgb, var(--p-panel) 70%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--p-line) 28%, transparent);
+}
+.p-brand { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; user-select: none; }
+.p-brand-symbol {
+  display: block;
+  width: 34px;
+  height: 28px;
+}
+.p-brand-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: Outfit, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.7px;
+}
+.p-brand-wordmark > span { display: block; }
+.p-brand-plus { margin-left: .0625em; letter-spacing: 0; transform: translateY(-.018em); }
+.p-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--p-line);
+  background: var(--p-panel);
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 120ms ease;
+}
+.p-btn:active:not(:disabled) { transform: translateY(1px); }
+.p-btn:focus { outline: none; }
+.p-btn:focus-visible { box-shadow: 0 0 0 2px var(--p-bg), 0 0 0 3px var(--p-accent); }
+.theme-toggle { margin-left: auto; width: 36px; height: 36px; padding: 8px; background: transparent; border-color: transparent; color: var(--p-muted); }
+.p-titlebar .p-btn:is(:hover, :active):not(:disabled) { background: var(--p-hover); color: var(--p-accent); }
+.p-titlebar .p-btn:is(:hover, :active):not(:disabled) svg { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--p-accent), transparent 45%)); }
+:root[data-theme="light"] .p-titlebar .p-btn:is(:hover, :active):not(:disabled) { background: var(--p-selected); color: #667173; }
+:root[data-theme="light"] .p-titlebar .p-btn:is(:hover, :active):not(:disabled) svg { filter: none; }
+.theme-toggle .moon { display: none; }
+[data-theme="light"] .theme-toggle .sun { display: none; }
+[data-theme="light"] .theme-toggle .moon { display: block; }
+.download-area { min-height: calc(100vh - 64px); min-height: calc(100dvh - 64px); display: grid; place-items: center; padding: 32px 20px; }
+.download-content { display: flex; flex-direction: column; align-items: center; gap: 36px; width: 100%; max-width: 760px; }
+.download-content h1 { margin: 0; max-width: 760px; color: #edf0ed; font-family: Outfit, "MKC Interface", sans-serif; font-size: clamp(46px, 5.4vw, 76px); font-weight: 500; line-height: 1.085; letter-spacing: -.045em; text-align: center; text-wrap: balance; }
+.download-content h1 > span { display: block; color: #e9c45e; }
+:root[data-theme="dark"] .download-content h1 > span { color: var(--p-accent); }
+.download-options { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; max-width: 640px; }
+.download-note { margin: 0; color: #edf0edb3; font-size: 12px; line-height: 1.4; text-align: center; }
+.download-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: min(100%, 414px); }
+.download-button { min-height: 48px; min-width: 0; width: 100%; padding: 12px 18px; gap: 10px; font-size: 13px; justify-content: flex-start; }
+.download-button:hover:not(:disabled) { border-color: var(--p-accent); background: var(--p-selected); }
+.download-button:disabled { opacity: .35; cursor: default; }
+.download-arrow { margin-left: auto; width: 15px; height: 15px; }
+/* Download buttons grow the logo's wings in the accent colour: while hovered, and for a moment
+   when clicked or tapped. Each bar stretches out from the button with the logo's slanted tip */
+.download-button { position: relative; }
+.download-button:is(:hover, .is-winged) { z-index: 1; }
+.download-wings { position: absolute; top: calc(50% - 14.5px); width: 42px; height: 29px; pointer-events: none; }
+.download-wings.is-left { right: calc(100% + 5px); }
+.download-wings.is-right { left: calc(100% + 5px); }
+.download-wings i { position: absolute; width: 0; height: 11.7px; background: var(--p-accent); transition: width .2s cubic-bezier(.5, 0, .9, .6); }
+.download-wings i:first-child { top: 0; --reach: 42px; --tip: 8.1px; transition-delay: 40ms; }
+.download-wings i:last-child { top: 17.3px; --reach: 30.1px; --tip: 8.1px; }
+.download-wings.is-left i { right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, var(--tip) 100%); }
+.download-wings.is-right i { left: 0; clip-path: polygon(0 0, 100% 0, calc(100% - var(--tip)) 100%, 0 100%); }
+:root[data-theme="dark"] .download-wings { filter: drop-shadow(0 0 5px color-mix(in srgb, var(--p-accent) 55%, transparent)); }
+.download-button.is-winged .download-wings i { width: var(--reach); transition: width .28s cubic-bezier(.2, .7, .3, 1); }
+.download-button.is-winged .download-wings i:last-child { transition-delay: 60ms; }
+@media (hover: hover) {
+  .download-button:hover .download-wings i { width: var(--reach); transition: width .28s cubic-bezier(.2, .7, .3, 1); }
+  .download-button:hover .download-wings i:last-child { transition-delay: 60ms; }
+}
+@media (min-width: 660px) {
+  .download-buttons { grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(100%, 628px); }
+}
+@media (min-width: 900px) {
+  .download-area { padding: 48px; }
+  .download-content { display: grid; grid-template-columns: minmax(0, 1fr) 240px; max-width: 940px; gap: 40px; }
+  .download-content h1 { text-align: left; text-wrap: pretty; }
+  .download-buttons { grid-template-columns: minmax(0, 1fr); width: 100%; }
+}
+@media (max-width: 700px) {
+  .download-content h1 { font-size: clamp(43px, 8.5vw, 63px); letter-spacing: -.05em; line-height: 1.075; }
+}
+@media (max-width: 440px) {
+  .download-button { padding-inline: 10px; gap: 6px; font-size: 12px; }
+}
+@media (max-width: 360px) {
+  .download-arrow { display: none; }
+}
+
+/* Seven feature sections below the download view, each with an animated scene (assets/scenes.js) */
+.features {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 20px 40px 120px;
+}
+.feature-section {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 36px;
+  min-height: 400px;
+  /* Room between the sections grows with the window: 18% of its height, 136 to 220 px */
+  padding: clamp(136px, 18vh, 220px) 0;
+  border-top: 1px solid rgb(184 202 192 / .14);
+  scroll-margin-top: 32px;
+}
+.feature-section.is-flip { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+.feature-section.is-flip h2 { order: 2; }
+.feature-section h2 {
+  color: #edf0ed;
+  font-family: Outfit, "MKC Interface", sans-serif;
+  font-size: clamp(29px, 3.25vw, 40px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+  /* Balance keeps the line breaks even; the cap sits close to the longest
+     balanced line so the centered box hugs the text instead of leaving it
+     stranded on a wide box's left edge. */
+  text-wrap: balance;
+  max-width: 320px;
+  margin: 0;
+}
+/* Every heading centers as a block in its column; the text inside stays
+   left-aligned, as text should be. */
+@media (min-width: 761px) {
+  .feature-section h2 { justify-self: center; }
+}
+.feature-6 h2 { font-size: clamp(28px, 3vw, 36px); }
+@media (max-width: 760px) {
+  .features { max-width: 600px; padding: 32px 24px 72px; }
+  .feature-section, .feature-section.is-flip, .feature-section.is-hands-on, .feature-section.is-strip { grid-template-columns: minmax(0, 1fr); gap: 20px; min-height: 0; padding: 44px 0 36px; }
+  .feature-section h2, .feature-section.is-flip h2 { order: 0; padding: 0; max-width: 410px; font-size: clamp(28px, 5.5vw, 36px); text-align: center; justify-self: center; }
+  .feature-6 h2 { max-width: 420px; }
+}
+@media (max-width: 380px) {
+  .features { padding-inline: 18px; }
+  .feature-section { gap: 16px; padding-block: 36px 28px; }
+}
+
+.p-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 24px;
+  border-top: 1px solid var(--p-line);
+  color: var(--p-muted);
+  font-size: 12px;
+}
+.p-footer nav { display: flex; gap: 16px; }
+.p-footer a { color: var(--p-muted); text-decoration: none; }
+.p-footer a:hover, .p-footer a:focus-visible { color: var(--p-accent); }
+
+/* The page fills the window, so a short one keeps the footer at the bottom */
+.p-doc {
+  flex-grow: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+.p-doc h1 {
+  margin: 0 0 4px;
+  font-family: Outfit, sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4.5vw, 38px);
+  letter-spacing: -.5px;
+}
+.p-doc h2 {
+  margin: 28px 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--p-text);
+}
+.p-doc p, .p-doc li { margin: 0 0 10px; color: var(--p-muted); }
+.p-doc ul { margin: 0 0 10px; padding-left: 20px; }
+.p-doc a:not(.p-btn) { color: var(--p-accent); text-decoration: none; }
+.p-doc a:not(.p-btn):hover, .p-doc a:not(.p-btn):focus-visible { text-decoration: underline; }
+.p-doc-date { font-size: 12px; }
+.p-doc-404 { text-align: center; padding-top: 96px; }
+.p-doc-404 a { display: inline-block; margin-top: 12px; }
+
+/* Light mode puts this text straight on the mid-tone canvas, where the app's
+   light-theme text colors, made for white panels, all but vanish. It takes light
+   canvas colors instead, like the download page's headings; even white reaches
+   only 4.8:1 on this canvas. */
+[data-theme="light"] .p-doc :is(h1, h2, p, li) { color: #f4f7f4; }
+[data-theme="light"] .p-doc .p-doc-date,
+[data-theme="light"] .p-footer,
+[data-theme="light"] .p-footer a { color: #edf0ed; }
+[data-theme="light"] .p-doc a:not(.p-btn),
+[data-theme="light"] .p-footer a:is(:hover, :focus-visible) { color: #f5e2a8; }
+
+/* The desk toy above the heading */
+.toy {
+  position: relative;
+  order: -1;
+  width: 100%;
+  height: 300px;
+  overflow: hidden; /* a box, like the app's arrangement canvas: screens show only inside it */
+  user-select: none;
+  -webkit-user-select: none;
+  --toy-line: rgb(214 224 240 / .78);
+  --toy-line-soft: rgb(214 224 240 / .4);
+  --toy-accent: #8ab4ff;
+  --toy-ink: #edf2fc;
+  --toy-bg: var(--p-bg);
+}
+[data-theme="light"] .toy {
+  --toy-line: rgb(248 250 246 / .88);
+  --toy-line-soft: rgb(248 250 246 / .45);
+  --toy-accent: #f0c24f;
+  --toy-ink: #f8faf6;
+  /* The light page as seen behind the toy: .p-window's #657572 under its glow and
+     texture, measured the same from 390 to 1920 px wide */
+  --toy-bg: #6b7b77;
+}
+.download-options { order: 1; }
+@media (min-width: 900px) {
+  .download-content { gap: 24px 40px; }
+  .toy { grid-column: 1; grid-row: 1; align-self: end; }
+  .download-content h1 { grid-column: 1; grid-row: 2; align-self: start; }
+  .download-options { grid-column: 2; grid-row: 1 / 3; }
+}
+.toy-world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.toy-screen { position: absolute; left: 0; top: 0; z-index: 1; cursor: grab; touch-action: none; --lift: 0; }
+.toy-screen.is-dragging { z-index: 3; cursor: grabbing; }
+/* A screen is just its outline, a little brighter while held */
+.toy-display {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1.6px solid var(--toy-line);
+  border-radius: 9px;
+  box-shadow: 0 0 calc(var(--lift) * 14px) color-mix(in srgb, var(--toy-accent) calc(var(--lift) * 45%), transparent);
+}
+.toy-dock {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 38%;
+  height: 9px;
+  border: 1.4px solid var(--toy-line-soft);
+  border-radius: 4px;
+  transform: translateX(-50%);
+}
+.toy-taskbar { position: absolute; inset: auto 0 0; height: 11px; border-top: 1.4px solid var(--toy-line-soft); }
+/* Inside a screen, in layers: pasted files, windows, keystrokes and clicks, the pointer */
+.toy-layer { position: absolute; inset: 0; pointer-events: none; }
+/* Windows appear only while something happens in them */
+.toy-window {
+  position: absolute;
+  left: calc(var(--wx) * 100%);
+  top: calc(var(--wy) * 100%);
+  width: calc(var(--ww) * 100%);
+  height: calc(var(--wh) * 100%);
+  overflow: hidden;
+  border: 1.4px solid var(--toy-line);
+  border-radius: 5px;
+  opacity: 0;
+  transform: scale(.9);
+  transition: opacity .25s ease, transform .35s cubic-bezier(.2, 1.5, .4, 1);
+}
+.toy-window.is-shown { opacity: 1; transform: scale(1); }
+.toy-titlebar { height: 8px; border-bottom: 1.2px solid var(--toy-line-soft); }
+/* Text: three lines, and a selection that grows over the second as the pointer drags */
+.toy-line { position: absolute; left: 7px; top: calc(13px + var(--i) * 8px); width: calc((100% - 14px) * var(--len)); height: 3px; border-radius: 2px; background: var(--toy-line); }
+.toy-select { position: absolute; left: 5px; top: 19px; width: 0; height: 7px; border-radius: 2px; background: color-mix(in srgb, var(--toy-accent) 38%, transparent); }
+.toy-select.is-copied { animation: toy-copied .6s ease-out; }
+.toy-caret { position: absolute; top: 11px; width: 1.3px; height: 7px; background: var(--toy-ink); animation: toy-blink 1s steps(1) infinite; }
+/* A picture, framed while selected */
+.toy-picture { position: absolute; left: calc(50% - 15px); top: calc(50% - 7px); width: 30px; height: 22px; border-radius: 3px; }
+.toy-picture svg { display: block; width: 100%; height: 100%; fill: none; stroke: var(--toy-line); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.toy-picture.is-selected { outline: 1.3px solid var(--toy-accent); outline-offset: 2px; }
+.toy-picture.is-pasted { left: 7px; top: 13px; opacity: 0; transform: scale(.3); transform-origin: left top; }
+.toy-picture.is-pasted.is-shown { animation: toy-pop .5s cubic-bezier(.2, 1.6, .4, 1) forwards; }
+/* Files, in a window or pasted on the desktop */
+.toy-file { position: absolute; width: 13px; height: 16px; opacity: 0; transform: scale(.4); transition: opacity .25s, transform .35s cubic-bezier(.2, 1.6, .4, 1); }
+.toy-file svg { display: block; width: 100%; height: 100%; fill: none; stroke: var(--toy-line); stroke-width: 1.3; stroke-linejoin: round; }
+.toy-file.is-shown { opacity: 1; transform: scale(1); }
+.toy-window .toy-file { top: calc(50% - 4px); }
+.toy-file.is-selected svg { stroke: var(--toy-accent); fill: color-mix(in srgb, var(--toy-accent) 22%, transparent); }
+/* Whatever was just pasted glows for a moment */
+.toy-line.is-pasted { animation: toy-glow 1s ease-out; }
+.is-pasted svg { animation: toy-glow-stroke 1s ease-out; }
+/* Music: bars that dance while it plays, a play or pause button, a progress bar */
+.toy-eq { position: absolute; inset: 15px 0 19px; display: flex; justify-content: center; align-items: flex-end; gap: 3px; }
+.toy-bar { width: 3px; height: 100%; border-radius: 1px; background: var(--toy-line); transform-origin: bottom; animation: toy-eq .8s ease-in-out infinite alternate paused; }
+.toy-bar:nth-child(2) { animation-duration: .55s; animation-delay: -.3s; }
+.toy-bar:nth-child(3) { animation-duration: .7s; animation-delay: -.6s; }
+.toy-bar:nth-child(4) { animation-duration: .5s; animation-delay: -.15s; }
+.toy-bar:nth-child(5) { animation-duration: .65s; animation-delay: -.45s; }
+.is-playing .toy-bar { background: var(--toy-accent); animation-play-state: running; }
+.toy-controls { position: absolute; left: 7px; right: 7px; bottom: 6px; height: 8px; display: flex; align-items: center; gap: 5px; }
+.toy-play svg { display: block; width: 8px; height: 8px; fill: none; stroke: var(--toy-line); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.toy-icon-pause, .is-playing .toy-icon-play { display: none; }
+.is-playing .toy-icon-pause { display: inline; }
+.toy-progress { position: relative; flex: 1; height: 2px; overflow: hidden; border-radius: 1px; background: var(--toy-line-soft); }
+.toy-progress::after { content: ""; position: absolute; inset: 0; background: var(--toy-accent); transform-origin: left; animation: toy-progress 9s linear forwards paused; }
+.is-playing .toy-progress::after { animation-play-state: running; }
+/* A typed word, with the caret after it */
+.toy-typed { position: absolute; left: 7px; top: 12px; color: var(--toy-ink); font: 600 10px/1 "MKC Interface", system-ui, sans-serif; white-space: nowrap; }
+.toy-caret-after { display: inline-block; width: 1.3px; height: 9px; margin-left: 1px; vertical-align: -1px; background: var(--toy-ink); animation: toy-blink 1s steps(1) infinite; }
+/* The volume, shown on the screen whose volume changes */
+.toy-hud { position: absolute; left: calc(50% - 36px); top: 9px; width: 72px; height: 15px; display: flex; align-items: center; gap: 5px; padding: 0 7px; border: 1.3px solid var(--toy-line); border-radius: 8px; background: var(--toy-bg); opacity: 0; transform: scale(.8); transition: opacity .2s, transform .3s cubic-bezier(.2, 1.6, .4, 1); }
+.toy-hud.is-shown { opacity: 1; transform: scale(1); }
+.toy-hud svg { display: block; width: 10px; height: 8px; flex-shrink: 0; fill: none; stroke: var(--toy-line); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+.toy-level { position: relative; flex: 1; height: 2px; overflow: hidden; border-radius: 1px; background: var(--toy-line-soft); }
+.toy-level::after { content: ""; position: absolute; inset: 0; background: var(--toy-accent); transform-origin: left; transform: scaleX(var(--level)); transition: transform .18s ease-out; }
+/* A click, as a ring that opens under the pointer */
+.toy-click { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border: 1.2px solid var(--toy-accent); border-radius: 50%; animation: toy-click .42s ease-out forwards; }
+@keyframes toy-copied { 40% { background: color-mix(in srgb, var(--toy-accent) 80%, transparent); box-shadow: 0 0 6px var(--toy-accent); } }
+@keyframes toy-blink { 50% { opacity: 0; } }
+@keyframes toy-glow { from { background: var(--toy-accent); box-shadow: 0 0 6px var(--toy-accent); } }
+@keyframes toy-glow-stroke { from { stroke: var(--toy-accent); } }
+@keyframes toy-eq { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
+@keyframes toy-progress { from { transform: scaleX(.1); } to { transform: scaleX(1); } }
+@keyframes toy-click { from { opacity: .9; transform: scale(.25); } to { opacity: 0; transform: scale(1); } }
+/* Android 14's arrow cursor (public domain, rw-designer 254107), traced from its 128 px
+   image. The first path is its silhouette, filled with the page colour so nothing shows
+   through the inside; the second is its white edge, stroked 2 units (about 0.35 px) heavier
+   so it stays solid at this size. The hotspot sits at (8.5, 5.5) in the 64 x 73 viewBox,
+   so the margin keeps it on the pointer's position */
+.toy-pointer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 11px;
+  height: 12.55px;
+  margin: -0.95px 0 0 -1.46px;
+  opacity: 0; /* hidden until a screen's turn shows it */
+  transform-origin: 1.46px 0.95px; /* clicks scale it around the hotspot */
+}
+.toy-pointer svg { display: block; width: 100%; height: 100%; overflow: visible; fill: var(--toy-accent); stroke: var(--toy-accent); stroke-width: 2; stroke-linejoin: round; }
+.toy-pointer path:first-child { fill: var(--toy-bg); stroke: none; }
+/* Keystrokes, as little keycaps inside the screen */
+.toy-chord {
+  position: absolute;
+  bottom: 22px;
+  display: flex;
+  gap: 3px;
+  transform: translateX(-50%);
+  animation: toy-chord .9s ease-out forwards;
+}
+.toy-key {
+  min-width: 16px;
+  padding: 2px 4px;
+  border: 1.3px solid var(--toy-line);
+  border-radius: 4px;
+  box-shadow: 0 1.5px 0 var(--toy-line-soft);
+  color: var(--toy-ink);
+  font: 600 9px/1.2 "MKC Interface", system-ui, sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+.toy-key svg { display: block; width: 11px; height: 9px; margin: 0 auto; fill: none; stroke: var(--toy-ink); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes toy-chord {
+  0% { opacity: 0; transform: translate(-50%, 6px) scale(.7); }
+  18% { opacity: 1; transform: translate(-50%, 0) scale(1.08); }
+  30% { transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -14px); }
+}
+.toy-seam {
+  position: absolute;
+  z-index: 2;
+  width: 3px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--toy-accent);
+  box-shadow: 0 0 6px var(--toy-accent), 0 0 16px color-mix(in srgb, var(--toy-accent) 60%, transparent);
+  pointer-events: none;
+}
+.toy-seam.is-born { animation: toy-seam-in .55s cubic-bezier(.2, 1.5, .4, 1); }
+.toy-seam-y.is-born { animation-name: toy-seam-in-y; }
+.toy-seam.is-pulse { animation: toy-seam-pulse .45s ease-out; }
+.toy-seam.is-breaking { animation: toy-seam-out .38s ease-in forwards; }
+.toy-ghost { opacity: 0; transition: opacity .15s; }
+/* While a dragged screen overlaps another: where it will land, as in the app */
+.toy-landing { position: absolute; left: 0; top: 0; z-index: 0; border: 1.5px dashed var(--toy-accent); border-radius: 9px; background: color-mix(in srgb, var(--toy-accent) 7%, transparent); opacity: 0; transition: opacity .15s; pointer-events: none; }
+.toy-landing.is-shown { opacity: 1; }
+/* The pull between a dragged screen and the nearest edge facing it, stronger as they near */
+.toy-pull { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 6px; background: color-mix(in srgb, var(--toy-accent) 16%, transparent); filter: blur(3px); pointer-events: none; }
+.toy-pull-edge { position: absolute; left: 0; top: 0; z-index: 2; border-radius: 2px; background: var(--toy-accent); box-shadow: 0 0 7px var(--toy-accent); pointer-events: none; }
+.toy-ghost.is-shown { animation: toy-ghost 1s ease-in-out infinite; }
+@keyframes toy-seam-in { 0% { opacity: 0; transform: scale(1, 0); filter: brightness(2.2); } 40% { opacity: 1; filter: brightness(2.2); } 100% { transform: scale(1); filter: brightness(1); } }
+@keyframes toy-seam-in-y { 0% { opacity: 0; transform: scale(0, 1); filter: brightness(2.2); } 40% { opacity: 1; filter: brightness(2.2); } 100% { transform: scale(1); filter: brightness(1); } }
+@keyframes toy-seam-pulse { 0% { filter: brightness(2.4); box-shadow: 0 0 10px var(--toy-accent), 0 0 30px var(--toy-accent); } 100% { filter: brightness(1); } }
+@keyframes toy-seam-out { to { opacity: 0; transform: scale(1.6); } }
+@keyframes toy-ghost { 0%, 100% { opacity: .25; } 50% { opacity: .7; } }
+.toy-spark {
+  position: absolute;
+  z-index: 5;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--toy-accent);
+  box-shadow: 0 0 6px var(--toy-accent);
+  pointer-events: none;
+  animation: toy-spark .6s cubic-bezier(.2, .8, .3, 1) forwards;
+}
+@keyframes toy-spark { to { transform: translate(var(--sx), var(--sy)) scale(.2); opacity: 0; } }
+@keyframes toy-pop { to { opacity: 1; transform: scale(1); } }
+/* Screens not in use wait, dimmed, without a pointer */
+.toy-display, .toy-dock, .toy-taskbar { transition: border-color .4s ease; }
+.toy-screen.is-idle .toy-display { border-color: var(--toy-line-soft); }
+.toy-screen.is-idle .toy-dock, .toy-screen.is-idle .toy-taskbar { border-color: color-mix(in srgb, var(--toy-line-soft) 55%, transparent); }
+.toy-pointer { transition: opacity .3s ease; }
+/* Light theme: screen outlines a little heavier, drawn about 1.8 pixels (docks and taskbars 1.4)
+   however large or small the camera shows them. Browsers round a border down to whole device
+   pixels before the camera scales it, so the camera picks the widths (--edge, --edge-soft) */
+[data-theme="light"] :is(.toy, .scene) .toy-display { border-width: var(--edge, 1.6px); }
+[data-theme="light"] :is(.toy, .scene) .toy-dock { border-width: var(--edge-soft, 1.4px); }
+[data-theme="light"] :is(.toy, .scene) .toy-taskbar { border-top-width: var(--edge-soft, 1.4px); }
+
+/* The feature scenes, drawn like the desk toy (assets/scenes.js) */
+.scene {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  --toy-line: rgb(214 224 240 / .78);
+  --toy-line-soft: rgb(214 224 240 / .4);
+  --toy-line-dim: rgb(214 224 240 / .15);
+  --toy-accent: #8ab4ff;
+  --toy-ink: #edf2fc;
+  --toy-bg: var(--p-bg);
+}
+[data-theme="light"] .scene {
+  --toy-line: rgb(248 250 246 / .88);
+  --toy-line-soft: rgb(248 250 246 / .45);
+  --toy-line-dim: rgb(248 250 246 / .2);
+  --toy-accent: #f0c24f;
+  --toy-ink: #f8faf6;
+  --toy-bg: #6b7b77;
+}
+/* The shots differ in shape as well as in what they show */
+.scene[data-story="control"] { aspect-ratio: 2 / 1; }
+.scene[data-story="arrange"] { aspect-ratio: 16 / 11; }
+.scene[data-story="copyPaste"] { aspect-ratio: 3 / 1; }
+.scene[data-story="pairing"] { aspect-ratio: 2 / 1; }
+.scene-world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+/* Scenes are to watch, except the desk arranged by hand; over the rest, touch scrolls the page */
+.scene .toy-screen { pointer-events: none; touch-action: auto; }
+.scene[data-story="arrange"] .toy-screen { pointer-events: auto; touch-action: none; cursor: grab; }
+.scene[data-story="arrange"] .toy-screen.is-dragging { cursor: grabbing; }
+.scene-pointer { z-index: 4; pointer-events: none; }
+/* Control: a keyboard and mouse in front of each screen; the pair in use lights up, the other
+   waits dimmed */
+.scene-keyboard, .scene-mouse { position: absolute; left: 0; top: 0; overflow: visible; fill: none; stroke: var(--toy-line-dim); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; transition: stroke .35s, filter .35s; }
+.scene-keyboard.is-active, .scene-mouse.is-active { stroke: var(--toy-line); filter: drop-shadow(0 0 5px color-mix(in srgb, var(--toy-accent) 45%, transparent)); }
+.scene-key { stroke-width: 1; transition: fill .12s, stroke .12s; }
+.scene-key.is-pressed { fill: var(--toy-accent); stroke: var(--toy-accent); }
+.scene-mouse .scene-mouse-button { stroke: none; fill: transparent; transition: fill .12s; }
+.scene-mouse.is-click .scene-mouse-button { fill: var(--toy-accent); }
+/* A key's letter pops up above the keyboard, rising less than the toy's so it stays clear of
+   the screen */
+.scene-chord { bottom: auto; z-index: 3; animation-name: scene-chord; }
+@keyframes scene-chord {
+  0% { opacity: 0; transform: translate(-50%, 4px) scale(.7); }
+  18% { opacity: 1; transform: translate(-50%, 0) scale(1.08); }
+  30% { transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -8px); }
+}
+/* The clipboard on its way over: the copied line, or a file, riding beside the pointer */
+.scene-chip { position: absolute; left: 0; top: 0; z-index: 3; border-radius: 3px; background: var(--toy-accent); box-shadow: 0 0 6px var(--toy-accent), 0 0 14px color-mix(in srgb, var(--toy-accent) 55%, transparent); pointer-events: none; }
+.scene-rider { position: absolute; left: 0; top: 0; z-index: 3; width: 13px; height: 16px; pointer-events: none; }
+.scene-rider svg { display: block; width: 100%; height: 100%; fill: color-mix(in srgb, var(--toy-accent) 22%, transparent); stroke: var(--toy-accent); stroke-width: 1.3; stroke-linejoin: round; filter: drop-shadow(0 0 3px var(--toy-accent)); }
+/* A file still copying: faint, inside a ring that fills, then whole */
+.toy-file.is-shown.is-arriving { opacity: .4; }
+.scene-ring { position: absolute; width: 36px; height: 36px; overflow: visible; fill: none; stroke-width: 1.6; opacity: 0; transform: rotate(-90deg) scale(.7); transition: opacity .25s, transform .35s cubic-bezier(.2, 1.5, .4, 1); }
+.scene-ring.is-shown { opacity: 1; transform: rotate(-90deg); }
+.scene-ring circle { stroke: var(--toy-line-soft); }
+.scene-ring .scene-ring-done { stroke: var(--toy-accent); stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; filter: drop-shadow(0 0 3px var(--toy-accent)); }
+.scene-ring.is-done { opacity: 0; transform: rotate(-90deg) scale(1.4); transition: opacity .45s ease-out, transform .45s ease-out; }
+/* Pairing: the same code on both screens, and one button */
+.scene-code { position: absolute; left: 0; right: 0; top: calc(50% - 11px); color: var(--toy-ink); font: 600 15px/1 "MKC Interface", system-ui, sans-serif; letter-spacing: .06em; text-align: center; transition: color .3s; }
+.scene-code.is-matched { color: var(--toy-accent); }
+.scene-pair { position: absolute; right: 8px; bottom: 7px; padding: 2px 9px; border: 1.2px solid var(--toy-accent); border-radius: 5px; color: var(--toy-accent); font: 600 8px/1.3 "MKC Interface", system-ui, sans-serif; transition: background-color .15s, color .15s; }
+.scene-pair.is-pressed { background: var(--toy-accent); color: var(--toy-bg); }
+/* Reconnection: every link with its latency, the fastest in use, and the traffic on it */
+.scene-links { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; fill: none; stroke: var(--toy-line-soft); stroke-width: 1.4; stroke-linecap: round; }
+.scene-links path { transition: stroke .3s, stroke-width .3s; }
+.scene-links path.is-active { stroke: var(--toy-accent); stroke-width: 2; filter: drop-shadow(0 0 4px var(--toy-accent)); }
+.scene-links path.is-dead { stroke-dasharray: 3 5; opacity: .5; }
+.scene-badge { position: absolute; z-index: 3; display: flex; gap: 5px; align-items: center; height: 22px; margin-top: -11px; padding: 0 8px 0 6px; border: 1.3px solid var(--toy-line-soft); border-radius: 11px; background: var(--toy-bg); transform: translateX(-50%); transition: opacity .3s, border-color .3s, box-shadow .3s; }
+.scene-badge svg { display: block; width: 14px; height: 13px; fill: none; stroke: var(--toy-line-soft); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+.scene-badge.is-on { border-color: var(--toy-accent); box-shadow: 0 0 8px color-mix(in srgb, var(--toy-accent) 45%, transparent); }
+.scene-badge.is-on svg { stroke: var(--toy-accent); }
+.scene-badge.is-dead { opacity: .45; }
+.scene-ms { color: var(--toy-line); font: 600 9px/1 "MKC Interface", system-ui, sans-serif; white-space: nowrap; transition: color .3s; }
+.scene-badge.is-on .scene-ms { color: var(--toy-accent); }
+.scene-dot { position: absolute; left: -2.5px; top: -2.5px; z-index: 2; width: 5px; height: 5px; border-radius: 50%; background: var(--toy-accent); box-shadow: 0 0 6px var(--toy-accent); pointer-events: none; }
+.scene-dot.is-probe { left: -1.5px; top: -1.5px; width: 3px; height: 3px; background: var(--toy-line); box-shadow: none; opacity: .7; }
+/* Desktop: the hands-on desk gets the most room, copy & paste is a short strip, and pairing
+   stands centred under its heading, as wide as the page allows */
+@media (min-width: 761px) {
+  .feature-section.is-hands-on { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); min-height: 540px; }
+  .feature-section.is-strip { grid-template-columns: minmax(0, .6fr) minmax(0, 1.4fr); min-height: 0; }
+  .feature-section.is-centred { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 28px; }
+  .feature-section.is-centred h2 { max-width: none; text-align: center; }
+  .feature-section.is-centred .scene { max-width: min(100%, 1040px); aspect-ratio: 3 / 1; }
+}
+/* Unlimited devices is a band across the whole window, its heading over a grid of screens */
+.p-window { overflow-x: clip; }
+.feature-section.feature-band {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100vw;
+  min-height: 0;
+  /* Its neighbours' padding and its own faded edges already set it apart */
+  margin: clamp(40px, 6vh, 80px) calc(50% - 50vw);
+  padding: 0;
+  border-top: 0;
+}
+.feature-band > * { grid-area: 1 / 1; }
+.feature-band h2 { position: relative; z-index: 1; place-self: center; max-width: none; font-size: clamp(34px, 4.6vw, 64px); text-align: center; }
+.feature-band .scene {
+  aspect-ratio: auto;
+  height: 460px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+.feature-band + .feature-section { border-top: 0; }
+/* So many seams glow softer; a wave lights them up as it passes */
+.feature-band .toy-seam { opacity: .5; }
+/* Phones: a feed of cards, one section per screen. The window scrolls in place of the page and
+   snaps to each card, one per swipe; the hero, with the toolbar above it, is the first card and
+   scrolls within itself when it is taller than the screen, and the footer ends the feed */
+@media (max-width: 760px) {
+  html, body { height: 100%; overflow: hidden; }
+  .p-window {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+  }
+  .download-area { scroll-snap-align: start; scroll-margin-top: 64px; }
+  .features { max-width: none; padding: 0; }
+  .feature-section, .feature-section.is-flip, .feature-section.is-hands-on, .feature-section.is-strip {
+    height: 100vh;
+    height: 100dvh;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-content: stretch;
+    gap: 24px;
+    padding: 64px 0 40px;
+    border-top: 0;
+    scroll-margin-top: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .feature-section h2 { padding-inline: 18px; }
+  /* Each scene fills its card below the heading, and its story stands up where it has a tall
+     version, so nothing in it is cut off while the card has room */
+  .feature-section .scene { align-self: stretch; height: auto; aspect-ratio: auto; }
+  /* The band fills its card, its heading over the middle */
+  .feature-section.feature-band {
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    grid-template-rows: minmax(0, 1fr);
+    align-content: stretch;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .feature-band h2 { font-size: clamp(32px, 9vw, 40px); }
+  .feature-band .scene { align-self: stretch; height: auto; }
+  .p-footer { scroll-snap-align: end; }
+}
