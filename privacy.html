@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#191e27">
+  <meta name="description" content="MKC+ privacy: no accounts, no tracking, and nothing you do leaves your local network.">
+  <link rel="canonical" href="https://mkcplus.com/privacy.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="./assets/app-icon.png">
+  <link rel="preload" href="./assets/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="./site.js?v=07e9236a"></script>
+  <script defer src="./assets/icons.js"></script>
+  <title>Privacy | MKC+</title>
+  <link rel="stylesheet" href="./styles.css?v=0ca6d167">
+</head>
+<body>
+  <div class="p-window">
+    <header class="p-titlebar">
+      <a class="p-brand" href="./" aria-label="MKC+ home">
+        <svg class="p-brand-symbol" aria-hidden="true"><use href="#i-brand"/></svg>
+        <svg class="p-brand-wordmark" aria-hidden="true"><use href="#i-wordmark"/></svg>
+      </a>
+      <button type="button" class="p-btn theme-toggle" aria-label="Switch color theme">
+        <svg class="sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+    </header>
+    <main class="p-doc">
+      <h1>Privacy</h1>
+      <p class="p-doc-date">Last updated 30 October 2026</p>
+
+      <h2>MKC+ is not watching you</h2>
+      <p>Most apps today collect what you do and send it somewhere. MKC+ was built the other way around. It has no accounts, no analytics, no advertising, no tracking and no history, and it does not know who you are. What you type, copy, move or drop never leaves your local network.</p>
+
+      <h2>Your devices talk only to each other</h2>
+      <p>Your mouse, keyboard, clipboard and files go straight from one of your devices to another over your own network, encrypted from end to end. No server sits in the middle.</p>
+
+      <h2>What goes online, and only this</h2>
+      <ul>
+        <li><strong>Feedback, if you choose to send it.</strong> Nothing else in the Google Play app ever reaches the internet.</li>
+        <li><strong>One update check a day</strong>, in MKC+ for Windows, macOS and Linux and the Android app from mkcplus.com (Google Play updates its own copy). It goes through a counter on Cloudflare that adds one to that day's total for the system and for what Cloudflare reads from the connection: country and region, network name and local hour. It keeps no IP address and no device identifier, so it counts installs without knowing whose they are.</li>
+      </ul>
+
+      <h2>When you send feedback</h2>
+      <p>Feedback is the one time MKC+ sends anything about you, and only what you choose: your message, and if you add them, your name, email address, screenshots, pictures, and a diagnostics bundle (system details, settings, network addresses, device identifiers and recent logs). It goes over an encrypted connection to our relay on Cloudflare and is saved as a private item on GitHub that only the developer can read. Screenshots and pictures are deleted after 30 days. The relay holds your IP address and device identifier for at most 20 minutes, only to stop anyone from flooding it.</p>
+
+      <h2>Android permissions</h2>
+      <p>Accessibility lets the mouse and keyboard of your other devices control your phone. MKC+ reads only what is under the pointer, to click and scroll, never the rest of your screen. It reads the clipboard only when the pointer leaves for another device, so you can paste there. It takes a picture of the screen once, to show your wallpaper on your other devices, and once more only if you add a screenshot to feedback. None of this leaves your own devices unless you send it as feedback.</p>
+
+      <h2 id="delete">Deleting your data</h2>
+      <p>The only data we can hold is feedback you sent. To have it deleted, email <a href="mailto:support@mkcplus.com">support@mkcplus.com</a> from the address you used, or with the date you sent it, and we delete it within 30 days.</p>
+
+      <h2>Children</h2>
+      <p>MKC+ is not directed at children under 13.</p>
+
+      <h2>This website</h2>
+      <p>mkcplus.com uses Cloudflare Web Analytics, which sets no cookies and does not follow you to other sites.</p>
+
+      <h2>Contact and changes</h2>
+      <p><a href="mailto:support@mkcplus.com">support@mkcplus.com</a>. If MKC+ ever changes what it sends, this page will say so first.</p>
+    </main>
+    <footer class="p-footer">
+      <span class="p-footer-brand">MKC+ · free beta</span>
+      <nav aria-label="Site">
+        <a href="./questions.html">Questions</a>
+        <a href="./terms.html">Terms</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="https://github.com/arxidaki/mkcplus-releases/releases" rel="noopener">Changelog</a>
+        <a href="https://github.com/arxidaki" rel="noopener">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1056 @@
+@font-face {
+  font-family: Outfit;
+  src: url("./assets/fonts/outfit.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+20-7E, U+A0;
+}
+/* fonts.py: begin */
+@font-face {
+  font-family: "MKC Interface";
+  src: url("./assets/fonts/inter-regular.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: block;
+  unicode-range: U+20-7E, U+A0;
+}
+@font-face {
+  font-family: "MKC Interface";
+  src: url("./assets/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: block;
+  unicode-range: U+AB, U+B7, U+BB, U+BF, U+C4-C6, U+C8-C9, U+CE, U+D6, U+DC, U+DF-EF, U+F1-F6, U+F8-FA, U+FC-FD, U+103, U+105, U+107, U+10C-10D, U+110-111, U+119, U+11B, U+11F, U+130-131, U+142, U+144, U+148, U+151, U+158-159, U+15B, U+15F, U+161, U+169, U+16F, U+171, U+17A-17E, U+1A1, U+1B0, U+218-219, U+21B, U+1EA1, U+1EA3, U+1EA5, U+1EA7, U+1EAB, U+1EAD, U+1EAF, U+1EB1, U+1EB7, U+1EB9, U+1EBB, U+1EBD, U+1EBF, U+1EC1, U+1EC3, U+1EC5, U+1EC7, U+1EC9, U+1ECB, U+1ECD, U+1ECF, U+1ED1, U+1ED3, U+1ED5, U+1ED7, U+1ED9, U+1EDB, U+1EDD, U+1EDF, U+1EE3, U+1EE5, U+1EE7-1EE9, U+1EEB, U+1EED, U+1EEF, U+1EF1, U+1EF3, U+2018-2019, U+201C-201E, U+202F;
+}
+@font-face {
+  font-family: "MKC Interface";
+  src: url("./assets/fonts/inter-greek.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: block;
+  unicode-range: U+386, U+388, U+38C, U+391, U+393-395, U+397, U+399-39D, U+39F-3A1, U+3A3-3A4, U+3A7, U+3AC-3AF, U+3B1-3C9, U+3CC-3CE;
+}
+@font-face {
+  font-family: "MKC Interface";
+  src: url("./assets/fonts/inter-cyrillic.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: block;
+  unicode-range: U+406, U+410-418, U+41A-429, U+42D, U+42F-449, U+44B-44F, U+454, U+456-457;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/fonts/outfit-latin.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+C5, U+CE, U+E1, U+E3-E7, U+E9, U+EB, U+ED-EE, U+F3-F4, U+F6, U+F8, U+FA, U+FC-FD, U+103, U+105, U+10D, U+119, U+11B, U+11F, U+131, U+142, U+144, U+159, U+15F, U+161, U+16F, U+171, U+17C, U+219, U+21B, U+2019;
+}
+@font-face {
+  font-family: "MKC Heading vi";
+  src: url("./assets/fonts/heading-vi.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+20-7E, U+A0, U+E0-E2, U+E9-EA, U+ED, U+F3-F4, U+FA, U+103, U+110-111, U+1A1, U+1B0, U+1EA1, U+1EA3, U+1EA5, U+1EAF, U+1EBF, U+1EC1, U+1EC3, U+1EC7, U+1EC9, U+1ECB, U+1ECD, U+1ECF, U+1ED1, U+1ED9, U+1EDB, U+1EE5, U+1EE7, U+1EEB, U+1EF1, U+1EF3;
+}
+@font-face {
+  font-family: "MKC Heading el";
+  src: url("./assets/fonts/heading-el.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+20, U+26, U+2C, U+A0, U+391, U+395, U+3A0, U+3A3-3A4, U+3AC-3AF, U+3B1, U+3B3-3C7, U+3C9, U+3CC-3CD;
+}
+@font-face {
+  font-family: "MKC Heading ru";
+  src: url("./assets/fonts/heading-ru.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+410, U+412, U+41A-41C, U+41F-420, U+423, U+430-436, U+438-445, U+447-448, U+44B-44C, U+44E-44F;
+}
+@font-face {
+  font-family: "MKC Heading uk";
+  src: url("./assets/fonts/heading-uk.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+410-411, U+41A, U+41C, U+41F-420, U+430-445, U+447-448, U+44C, U+44E-44F, U+454, U+456-457;
+}
+@font-face {
+  font-family: "MKC Heading he";
+  src: url("./assets/fonts/heading-he.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+5D0-5D5, U+5D7-5E2, U+5E6-5EA;
+}
+@font-face {
+  font-family: "MKC Heading ar";
+  src: url("./assets/fonts/heading-ar.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+60C, U+623, U+625-62A, U+62C-62F, U+631-635, U+637, U+639-63A, U+641-64A, U+651;
+}
+@font-face {
+  font-family: "MKC Heading th";
+  src: url("./assets/fonts/heading-th-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: block;
+  unicode-range: U+E01-E02, U+E04, U+E07-E08, U+E0A, U+E13-E17, U+E19-E1B, U+E1F, U+E21-E23, U+E25, U+E27, U+E2A-E2B, U+E2D, U+E30-E35, U+E37-E39, U+E40-E44, U+E47-E4A, U+E4C;
+}
+@font-face {
+  font-family: "MKC Heading th";
+  src: url("./assets/fonts/heading-th-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: block;
+  unicode-range: U+E01-E02, U+E04, U+E07-E08, U+E0A, U+E13-E17, U+E19-E1B, U+E1F, U+E21-E23, U+E25, U+E27, U+E2A-E2B, U+E2D, U+E30-E35, U+E37-E39, U+E40-E44, U+E47-E4A, U+E4C;
+}
+@font-face {
+  font-family: "MKC Heading th";
+  src: url("./assets/fonts/heading-th-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+  unicode-range: U+E01-E02, U+E04, U+E07-E08, U+E0A, U+E13-E17, U+E19-E1B, U+E1F, U+E21-E23, U+E25, U+E27, U+E2A-E2B, U+E2D, U+E30-E35, U+E37-E39, U+E40-E44, U+E47-E4A, U+E4C;
+}
+@font-face {
+  font-family: "MKC Heading ja";
+  src: url("./assets/fonts/heading-ja.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+3001, U+3042, U+304B, U+304F, U+3055-3056, U+3059, U+305B, U+3066-3067, U+3069-306B, U+306E-306F, U+3079, U+307E, U+3082, U+3088-3089, U+308B, U+308F, U+3092-3093, U+30A1-30A4, U+30A6, U+30AB, U+30AD, U+30AF-30B0, U+30B3, U+30B9, U+30BF, U+30C3, U+30C6-30C9, U+30CD, U+30D0, U+30D4-30D5, U+30DA, U+30DC, U+30DE, U+30E1, U+30EA-30EB, U+30ED, U+30EF, U+30F3, U+30FC, U+4F5C, U+518D, U+5236, U+52D5, U+5408, U+554F, U+63A5, U+64CD, U+6570, U+7121, U+7D9A, U+7F6E, U+81EA, U+8CEA, U+914D, U+9650, U+FF06;
+}
+@font-face {
+  font-family: "MKC Heading ko";
+  src: url("./assets/fonts/heading-ko.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+B7, U+ACB0, U+ADF8, U+AE30, U+B123-B124, U+B290, U+B294, U+B2E4, U+B300, U+B370, U+B3C4, U+B3D9, U+B4DC, U+B4E0, U+B514, U+B5A4, U+B85C, U+B97C, U+B9AD, U+B9C1, U+B9C8, U+BAA8, U+BB38, U+BB3B, U+BBF8, U+BC0F, U+BC30, U+BC88, U+BCF4-BCF5, U+BD99, U+C0AC, U+C0C1, U+C11C, U+C218, U+C2A4, U+C2B5, U+C591, U+C5B4, U+C5C6, U+C5D0, U+C5EC, U+C5F0, U+C6B0, U+C6CC, U+C704, U+C73C, U+C74C, U+C774, U+C77C, U+C790, U+C7AC, U+C81C, U+C8FC, U+C9C8, U+CC45, U+CE58, U+CEEC, U+D06C, U+D074, U+D0A4, U+D130, U+D14D, U+D2B8, U+D30C, U+D398, U+D55C;
+}
+@font-face {
+  font-family: "MKC Heading zh-Hans";
+  src: url("./assets/fonts/heading-zh-hans.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+3001, U+4E00, U+4E0A, U+4E0D, U+4E8E, U+4EF6, U+4EFB, U+4F53, U+4F60, U+5217, U+5236, U+52A8, U+5404, U+548C, U+57DF, U+5907, U+590D, U+5A92, U+5BF9, U+5C40, U+5E38, U+610F, U+6240, U+6309, U+636E, U+6392, U+63A5, U+63A7, U+6446, U+653E, U+6570, U+6587, U+65B0, U+6709, U+672C, U+6807, U+684C, U+7528, U+7545, U+7684, U+76D8, U+79CD, U+7C98, U+7F51, U+81EA, U+884C, U+89C1, U+8BBE, U+8D34, U+8FDE, U+9002, U+914D, U+91CD, U+91CF, U+952E, U+95EE, U+9650, U+9898, U+9F20, U+FF0C;
+}
+@font-face {
+  font-family: "MKC Heading zh-Hant";
+  src: url("./assets/fonts/heading-zh-hant.woff2") format("woff2");
+  font-weight: 500 700;
+  font-display: block;
+  unicode-range: U+3001, U+4E00, U+4E0A, U+4E0D, U+4EFB, U+4F4D, U+4F55, U+4F60, U+5217, U+5236, U+52D5, U+5340, U+5404, U+548C, U+554F, U+57DF, U+5A92, U+5B57, U+5C0D, U+5E38, U+6240, U+6392, U+63A7, U+6578, U+6587, U+6599, U+65B0, U+66A2, U+6709, U+6848, U+684C, U+6A94, U+6ED1, U+7167, U+7528, U+7684, U+76E4, U+7A2E, U+7DB2, U+7DDA, U+7F6E, U+81EA, U+884C, U+88DD, U+88FD, U+8907, U+898B, U+8CBC, U+8CC7, U+8DEF, U+9023, U+9069, U+914D, U+91CD, U+91CF, U+9375, U+9650, U+984C, U+9AD4, U+9F20, U+FF0C;
+}
+/* fonts.py: end */
+:root {
+  color-scheme: dark;
+  --p-bg: #191e27;
+  --p-panel: #252c38;
+  --p-text: #edf2fc;
+  --p-muted: #a4b2c8;
+  --p-line: #3b4555;
+  --p-accent: #8ab4ff;
+  --p-selected: #303f5c;
+  --p-dot: #374152;
+  --p-hover: #1c232d;
+  /* The fonts by language: a script the app's fonts lack is set in the system's font for it,
+     after the app's font so Latin names and digits keep their shapes */
+  --font-text: "MKC Interface", sans-serif;
+  --font-heading: Outfit, "MKC Interface", sans-serif;
+  --heading-tracking: 1;
+  /* The window's weights (typography.css), heavier on Windows below */
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semibold: 600;
+  font-family: var(--font-text);
+  font-weight: var(--w-regular);
+  font-size: 13px;
+  line-height: 1.45;
+  font-synthesis: none;
+  font-kerning: normal;
+  font-optical-sizing: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: var(--p-text);
+  background: var(--p-bg);
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --p-bg: #ccd4d0;
+  --p-panel: #d8ded8;
+  --p-text: #28384a;
+  --p-muted: #617185;
+  /* The grey of the window's off toggle track: darker than the panel, still quiet */
+  --p-line: #b6bfc9;
+  --p-accent: #d4af37;
+  --p-selected: #fdf0c8;
+}
+/* Selected text takes the theme's accent, as the window's selections do */
+::selection { background: color-mix(in srgb, var(--p-accent) 34%, transparent); }
+/* The light theme's text is often off-white on the stone: a pale gold with dark text reads on both */
+:root[data-theme="light"] ::selection { background: color-mix(in srgb, var(--p-accent) 50%, #fff); color: var(--p-text); }
+/* Windows draws type with DirectWrite, whose outlines come out thinner and harder edged than
+   the Mac's at these sizes. The window's rules for it (typography.css): a little more weight,
+   and a faint coverage fringe that softens the edges without moving a glyph. site.js names
+   the system in data-platform before the page draws */
+:root[data-platform="windows"] {
+  --w-regular: 450;
+  --w-medium: 550;
+  --w-semibold: 650;
+}
+:root[data-platform="windows"] :where(body, body *) {
+  text-shadow: 0 0 .4px color-mix(in srgb, currentColor 35%, transparent);
+}
+/* Arabic, Hebrew, Thai and the CJK scripts read in the system's font, and their headings keep
+   normal spacing (tightened Arabic breaks its joins, and CJK has no gaps to close) */
+:root:lang(ar) { --font-text: "MKC Interface", "Geeza Pro", "Segoe UI", "Noto Sans Arabic", Tahoma, sans-serif; }
+:root:lang(he) { --font-text: "MKC Interface", "Arial Hebrew", "Segoe UI", "Noto Sans Hebrew", Arial, sans-serif; }
+:root:lang(th) { --font-text: "MKC Interface", Thonburi, "Leelawadee UI", "Noto Sans Thai", Tahoma, sans-serif; }
+:root:lang(ja) { --font-text: "MKC Interface", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", Meiryo, "Noto Sans JP", sans-serif; }
+:root:lang(ko) { --font-text: "MKC Interface", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; }
+:root:lang(zh-Hans) { --font-text: "MKC Interface", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+:root:lang(zh-Hant) { --font-text: "MKC Interface", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif; }
+/* Japanese and Chinese headings break between phrases, never inside a word: only at their
+   punctuation, or where the browser knows the phrases (auto-phrase, Japanese in Chrome);
+   Korean breaks at its spaces, as it is written */
+:root:is(:lang(ja), :lang(ko), :lang(zh)) :is(h1, h2) { word-break: keep-all; overflow-wrap: anywhere; }
+:root:lang(ja) :is(h1, h2) { word-break: auto-phrase; }
+/* Russian's longest section word (переподключение) is wider than the desktop column: let
+   the browser hyphenate it rather than run past the edge */
+:root:lang(ru) h2 { hyphens: auto; }
+:root:is(:lang(ar), :lang(he), :lang(th), :lang(ja), :lang(ko), :lang(zh)) { --heading-tracking: 0; }
+/* Greek's round letters touch at Outfit's tight tracking */
+:root:lang(el) { --heading-tracking: .4; }
+/* The headings of the languages Outfit cannot set, each in the font the owner picked to stand
+   beside Outfit (fonts.py, HEADINGS). Outfit keeps their Latin letters and punctuation, except
+   in Vietnamese: Outfit has its plain letters but not the accented ones, so the heading font
+   sets the whole heading rather than mixing the two in a word */
+:root:lang(vi) { --font-heading: "MKC Heading vi", "MKC Interface", sans-serif; }
+/* Greek sets its whole line in its own font, so commas and spaces kern with the letters */
+:root:lang(el) { --font-heading: "MKC Heading el", Outfit, var(--font-text); }
+:root:lang(ru) { --font-heading: Outfit, "MKC Heading ru", var(--font-text); }
+:root:lang(uk) { --font-heading: Outfit, "MKC Heading uk", var(--font-text); }
+:root:lang(he) { --font-heading: Outfit, "MKC Heading he", var(--font-text); }
+:root:lang(ar) { --font-heading: Outfit, "MKC Heading ar", var(--font-text); }
+:root:lang(th) { --font-heading: Outfit, "MKC Heading th", var(--font-text); }
+:root:lang(ja) { --font-heading: Outfit, "MKC Heading ja", var(--font-text); }
+:root:lang(ko) { --font-heading: Outfit, "MKC Heading ko", var(--font-text); }
+:root:lang(zh-Hans) { --font-heading: Outfit, "MKC Heading zh-Hans", var(--font-text); }
+:root:lang(zh-Hant) { --font-heading: Outfit, "MKC Heading zh-Hant", var(--font-text); }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; min-height: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+svg { width: 17px; height: 17px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* These surface layers match the app's p-window background */
+.p-window {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--p-bg);
+  background-image:
+    radial-gradient(var(--p-dot) 0.65px, transparent 0.65px),
+    radial-gradient(ellipse at 50% 45%, #29416622, transparent 70%);
+  background-size: 18px 18px, 100% 100%;
+}
+/* The stone's hairline cracks, as the app's window draws them. */
+:root[data-theme="light"] .p-window {
+  background-color: #657572;
+  background-image:
+    radial-gradient(circle, #7c965099 0.8px, transparent 1px),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='960' height='720'><g fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'><path stroke-width='0.1' stroke-opacity='0.072' d='M511 593l-8 2M492 616l-2 5M905 351l6 -2M176 446l1 -11M207 513l5 -3M220 508l9 -1M92 510l-8 1'/><path stroke-width='0.2' stroke-opacity='0.072' d='M561 573l-7 2l-8 1M498 589l-9 0l-5 2l-6 2M394 486l-6 -2l-4 -4l-5 -4M886 290l4 -10l0 -5l1 -11M626 749l8 3l8 3l4 1l7 -1M626 29l8 3l8 3l4 1l7 -1M189 462l-4 -8l2 -10M234 506l9 -7l8 -6M198 449l-1 -10l1 -9l-1 -5M85 507l-7 1l-5 -1l-7 2M93 415l-6 -7M36 299l-5 -8l-7 -6l-7 -8'/><path stroke-width='0.2' stroke-opacity='0.104' d='M517 595l-7 -1M500 605l-5 6l-3 5M893 351l7 1l5 -1M180 461l-1 -9l-3 -6M203 514l4 -1M205 511l10 -1l6 -2M98 508l-5 3'/><path stroke-width='0.3' stroke-opacity='0.13' d='M532 592l-7 2l-7 1M524 588l-8 5l-9 7l-7 5M878 351l5 1l10 -1M187 475l-4 -7l-3 -7M187 518l7 -1l10 -3M191 511l10 1l4 -1M111 500l-9 3l-5 5'/><path stroke-width='0.4' stroke-opacity='0.072' d='M386 496l-11 -1l-5 -1l-6 -3l-10 0l-9 0l-4 -1l-6 1l-5 -4l-6 0l-9 2M960 329l4 -2l8 2l4 -3l8 -6l6 -2l3 -4l7 -8l11 -1l4 -5M0 329l4 -2l8 2l4 -3l8 -6l6 -2l3 -4l7 -8l11 -1l4 -5M594 709l7 0l8 0l5 2l6 1l7 2l4 -1l6 1l10 -2l6 3l5 1l10 3M76 322l-3 -10l-3 -4l-3 -7l-6 -7l-5 -8l-5 -8l-7 -6l0 -10l-4 -7l-5 -6M806 633l6 5l5 1l6 -3l6 -2l10 0l9 5l7 3l6 0l4 -2l8 0l7 -3l7 0'/><path stroke-width='0.4' stroke-opacity='0.104' d='M588 571l-6 2l-7 -1l-10 1l-4 0M536 590l-5 2l-8 -4l-6 -1l-4 1l-8 3l-8 -2M421 508l-4 -2l-5 -6l-5 -4l-7 -7l-7 -3M883 324l1 -9l0 -5l-3 -9l1 -6l4 -6M586 730l6 3l6 2l8 5l6 5l9 3l4 1M586 10l6 3l6 2l8 5l6 5l9 3l4 1M189 497l4 -7l-4 -6l-2 -9l1 -5l2 -8M207 517l5 -1l3 -4l10 -1l8 -4M194 476l2 -9l1 -6l-1 -6l2 -6M122 500l-10 0l-5 0l-10 1l-4 1l-8 5M115 428l-5 -6l-7 -6l-9 -1M63 334l-9 -3l-4 -8l-3 -7l-6 -8l-5 -9'/><path stroke-width='0.5' stroke-opacity='0.13' d='M876 373l-1 -7l-1 -6l3 -10l2 -4l0 -5l4 -10l-1 -7M539 706l8 5l6 4l5 4l4 3l6 1l10 1l5 4l4 1M539 -14l8 5l6 4l5 4l4 3l6 1l10 1l5 4l4 1M191 534l5 -9l-1 -5l0 -6l-6 -8l-1 -9M186 530l5 -2l7 -5l5 -3l5 -3M186 526l1 -8l4 -7l3 -10l0 -8l2 -10l-2 -7M170 495l-9 5l-9 -2l-6 0l-5 0l-7 3l-8 -3l-4 2M142 438l-8 -5l-6 -2l-7 1l-7 -5M100 361l-8 -6l-9 -7l-3 -5l-7 -7l-4 -2l-6 0'/><path stroke-width='0.6' stroke-opacity='0.104' d='M502 534l-4 -1l-4 -1l-4 -2l-6 -4l-10 -2l-9 -2l-6 3l-10 1l-9 -5l-5 1l-4 -3l-9 -3l-5 -6l-9 -1l-7 -5l-7 -2l-8 -5M881 371l8 -5l3 -6l5 -1l9 -3l8 -4l4 -5l6 -4l10 -3l5 0l8 -5l5 -1l5 -1l4 -4M465 677l4 6l7 8l5 3l8 2l7 -1l6 1l9 4l9 1l6 1l6 3l7 2l9 0l5 0l8 -1l11 -1l4 1l9 1l9 2M135 426l-1 -4l-1 -5l-2 -9l-3 -10l-5 -6l-3 -4l-4 -6l-5 -4l-5 -10l-6 -7l-2 -10l-8 -5l-2 -8l-2 -5l-8 -6l-1 -5M676 607l6 2l6 2l7 0l8 2l9 2l5 0l6 1l4 2l9 0l4 3l6 -1l5 1l4 1l9 2l9 2l8 1l5 3l9 2l6 2l5 -1'/><path stroke-width='0.6' stroke-opacity='0.13' d='M623 558l-8 4l-5 -1l-7 1l-7 3l-8 5M593 552l-10 3l-9 3l-5 5l-5 4l-6 9l-5 3l-9 5l-7 5M459 525l-6 -3l-4 -4l-6 -3l-10 -1l-6 -5l-5 -1'/><path stroke-width='0.8' stroke-opacity='0.13' d='M488 571l6 2l7 -1l8 -1l10 3l8 5l10 -1l11 -2l5 2l4 -1l7 1l6 -2l9 3l7 0l5 6l5 1l9 -1l5 0l7 1l4 2l8 3l4 2l10 0l11 0l9 5l5 2l7 7'/><path stroke-width='0.9' stroke-opacity='0.13' d='M651 566l-10 -3l-6 -2l-5 -2l-7 0l-3 -3l-7 3l-6 -3l-8 -4l-6 1l-9 -2l-8 2l-5 -4l-5 -1l-7 -2l-7 -1l-10 2l-5 -2l-5 -1l-4 -3l-9 -3l-8 -3l-9 -1M759 420l11 -3l6 1l11 1l10 0l4 1l9 1l8 0l8 -6l9 -2l5 -2l10 -2l7 -7l7 -8l2 -5l1 -7l7 -4l3 -4l4 -3M324 591l7 2l5 2l8 2l8 3l2 5l5 3l5 9l7 1l3 4l6 7l6 4l9 3l7 4l4 2l7 1l8 8l3 7l4 2l7 3l5 3l5 2l6 3l4 3l10 3M192 554l1 -10l-1 -10l-6 -4l0 -4l-5 -10l-3 -4l-2 -5l-2 -5l-4 -7l-4 -6l-4 -4l-6 -6l0 -9l-8 -6l-2 -4l-4 -4l2 -5l0 -6l-1 -6l-3 -5l-5 -8'/></g><g fill='none' stroke='%232f3a38' stroke-linecap='round' stroke-linejoin='round'><path stroke-width='0.1' stroke-opacity='0.231' d='M510 593l-8 2M491 615l-2 5M904 350l6 -2M175 445l1 -11M207 512l5 -3M220 507l9 -1M92 510l-8 1'/><path stroke-width='0.2' stroke-opacity='0.231' d='M560 572l-7 2l-8 1M497 588l-9 0l-5 2l-6 2M393 485l-6 -2l-4 -4l-5 -4M885 289l4 -10l0 -5l1 -11M625 748l8 3l8 3l4 1l7 -1M625 28l8 3l8 3l4 1l7 -1M189 461l-4 -8l2 -10M233 506l9 -7l8 -6M197 448l-1 -10l1 -9l-1 -5M84 506l-7 1l-5 -1l-7 2M93 414l-6 -7M35 298l-5 -8l-7 -6l-7 -8'/><path stroke-width='0.2' stroke-opacity='0.336' d='M517 594l-7 -1M499 604l-5 6l-3 5M892 350l7 1l5 -1M179 460l-1 -9l-3 -6M203 513l4 -1M204 510l10 -1l6 -2M97 507l-5 3'/><path stroke-width='0.3' stroke-opacity='0.42' d='M531 591l-7 2l-7 1M523 587l-8 5l-9 7l-7 5M877 350l5 1l10 -1M186 474l-4 -7l-3 -7M186 517l7 -1l10 -3M190 510l10 1l4 -1M111 499l-9 3l-5 5'/><path stroke-width='0.4' stroke-opacity='0.231' d='M385 496l-11 -1l-5 -1l-6 -3l-10 0l-9 0l-4 -1l-6 1l-5 -4l-6 0l-9 2M960 328l4 -2l8 2l4 -3l8 -6l6 -2l3 -4l7 -8l11 -1l4 -5M0 328l4 -2l8 2l4 -3l8 -6l6 -2l3 -4l7 -8l11 -1l4 -5M593 708l7 0l8 0l5 2l6 1l7 2l4 -1l6 1l10 -2l6 3l5 1l10 3M76 321l-3 -10l-3 -4l-3 -7l-6 -7l-5 -8l-5 -8l-7 -6l0 -10l-4 -7l-5 -6M805 632l6 5l5 1l6 -3l6 -2l10 0l9 5l7 3l6 0l4 -2l8 0l7 -3l7 0'/><path stroke-width='0.4' stroke-opacity='0.336' d='M587 570l-6 2l-7 -1l-10 1l-4 0M536 589l-5 2l-8 -4l-6 -1l-4 1l-8 3l-8 -2M421 507l-4 -2l-5 -6l-5 -4l-7 -7l-7 -3M882 324l1 -9l0 -5l-3 -9l1 -6l4 -6M586 729l6 3l6 2l8 5l6 5l9 3l4 1M586 9l6 3l6 2l8 5l6 5l9 3l4 1M188 496l4 -7l-4 -6l-2 -9l1 -5l2 -8M207 516l5 -1l3 -4l10 -1l8 -4M193 475l2 -9l1 -6l-1 -6l2 -6M121 499l-10 0l-5 0l-10 1l-4 1l-8 5M114 427l-5 -6l-7 -6l-9 -1M62 333l-9 -3l-4 -8l-3 -7l-6 -8l-5 -9'/><path stroke-width='0.5' stroke-opacity='0.42' d='M876 373l-1 -7l-1 -6l3 -10l2 -4l0 -5l4 -10l-1 -7M538 706l8 5l6 4l5 4l4 3l6 1l10 1l5 4l4 1M538 -14l8 5l6 4l5 4l4 3l6 1l10 1l5 4l4 1M191 533l5 -9l-1 -5l0 -6l-6 -8l-1 -9M185 529l5 -2l7 -5l5 -3l5 -3M185 525l1 -8l4 -7l3 -10l0 -8l2 -10l-2 -7M169 494l-9 5l-9 -2l-6 0l-5 0l-7 3l-8 -3l-4 2M142 438l-8 -5l-6 -2l-7 1l-7 -5M99 360l-8 -6l-9 -7l-3 -5l-7 -7l-4 -2l-6 0'/><path stroke-width='0.6' stroke-opacity='0.336' d='M501 533l-4 -1l-4 -1l-4 -2l-6 -4l-10 -2l-9 -2l-6 3l-10 1l-9 -5l-5 1l-4 -3l-9 -3l-5 -6l-9 -1l-7 -5l-7 -2l-8 -5M880 370l8 -5l3 -6l5 -1l9 -3l8 -4l4 -5l6 -4l10 -3l5 0l8 -5l5 -1l5 -1l4 -4M464 676l4 6l7 8l5 3l8 2l7 -1l6 1l9 4l9 1l6 1l6 3l7 2l9 0l5 0l8 -1l11 -1l4 1l9 1l9 2M134 425l-1 -4l-1 -5l-2 -9l-3 -10l-5 -6l-3 -4l-4 -6l-5 -4l-5 -10l-6 -7l-2 -10l-8 -5l-2 -8l-2 -5l-8 -6l-1 -5M675 606l6 2l6 2l7 0l8 2l9 2l5 0l6 1l4 2l9 0l4 3l6 -1l5 1l4 1l9 2l9 2l8 1l5 3l9 2l6 2l5 -1'/><path stroke-width='0.6' stroke-opacity='0.42' d='M622 558l-8 4l-5 -1l-7 1l-7 3l-8 5M592 552l-10 3l-9 3l-5 5l-5 4l-6 9l-5 3l-9 5l-7 5M458 524l-6 -3l-4 -4l-6 -3l-10 -1l-6 -5l-5 -1'/><path stroke-width='0.8' stroke-opacity='0.42' d='M488 570l6 2l7 -1l8 -1l10 3l8 5l10 -1l11 -2l5 2l4 -1l7 1l6 -2l9 3l7 0l5 6l5 1l9 -1l5 0l7 1l4 2l8 3l4 2l10 0l11 0l9 5l5 2l7 7'/><path stroke-width='0.9' stroke-opacity='0.42' d='M650 565l-10 -3l-6 -2l-5 -2l-7 0l-3 -3l-7 3l-6 -3l-8 -4l-6 1l-9 -2l-8 2l-5 -4l-5 -1l-7 -2l-7 -1l-10 2l-5 -2l-5 -1l-4 -3l-9 -3l-8 -3l-9 -1M758 419l11 -3l6 1l11 1l10 0l4 1l9 1l8 0l8 -6l9 -2l5 -2l10 -2l7 -7l7 -8l2 -5l1 -7l7 -4l3 -4l4 -3M323 590l7 2l5 2l8 2l8 3l2 5l5 3l5 9l7 1l3 4l6 7l6 4l9 3l7 4l4 2l7 1l8 8l3 7l4 2l7 3l5 3l5 2l6 3l4 3l10 3M191 553l1 -10l-1 -10l-6 -4l0 -4l-5 -10l-3 -4l-2 -5l-2 -5l-4 -7l-4 -6l-4 -4l-6 -6l0 -9l-8 -6l-2 -4l-4 -4l2 -5l0 -6l-1 -6l-3 -5l-5 -8'/></g><g fill='none' stroke='%232f3a38' stroke-linecap='round' stroke-linejoin='round'><path stroke-width='0.4' stroke-opacity='0.112' d='M529 202l1 7l1 5l1 5l0 6l1 6l1 6'/><path stroke-width='0.4' stroke-opacity='0.114' d='M831 576l-6 2l-5 1l-5 1l-6 1l-6 1'/><path stroke-width='0.4' stroke-opacity='0.116' d='M62 459l2 4l2 6l3 6'/><path stroke-width='0.4' stroke-opacity='0.124' d='M828 513l-6 0l-4 1l-5 0l-7 1'/><path stroke-width='0.4' stroke-opacity='0.131' d='M392 416l-5 2l-6 3l-4 2l-4 3l-4 2l-6 3'/><path stroke-width='0.4' stroke-opacity='0.158' d='M396 426l-6 3l-6 2l-4 3l-6 3l-4 1l-4 3l-4 2'/><path stroke-width='0.4' stroke-opacity='0.18' d='M559 280l-5 4l-4 3l-5 4l-3 3l-5 3l-5 3l-5 3'/><path stroke-width='0.4' stroke-opacity='0.196' d='M48 286l5 4l5 4'/><path stroke-width='0.4' stroke-opacity='0.215' d='M555 289l-4 3l-5 4l-4 3l-4 3l-4 4'/><path stroke-width='0.4' stroke-opacity='0.234' d='M317 520l-3 4l-5 4l-4 4l-5 4'/><path stroke-width='0.5' stroke-opacity='0.117' d='M332 510l-4 3l-3 2l-4 4l-5 4l-5 4l-4 4M339 390l-6 3l-5 3l-4 3'/><path stroke-width='0.5' stroke-opacity='0.119' d='M385 353l6 1l6 2M337 391l-6 4l-4 2l-5 3l-3 3l-6 3l-6 4'/><path stroke-width='0.5' stroke-opacity='0.124' d='M804 577l-5 1l-5 1l-4 1l-6 1'/><path stroke-width='0.5' stroke-opacity='0.145' d='M68 222l5 2l3 3l5 3l4 2l5 3l5 3l4 4'/><path stroke-width='0.5' stroke-opacity='0.162' d='M368 354l4 0l4 1l6 1l6 1'/><path stroke-width='0.5' stroke-opacity='0.185' d='M333 396l-4 3l-5 4l-5 3l-6 3'/><path stroke-width='0.5' stroke-opacity='0.203' d='M322 505l-4 4l-4 5'/><path stroke-width='0.5' stroke-opacity='0.216' d='M51 326l3 5l3 5l3 6'/><path stroke-width='0.5' stroke-opacity='0.233' d='M269 256l-2 5l-4 4l-3 4'/><path stroke-width='0.6' stroke-opacity='0.108' d='M46 285l3 3l5 4l4 4l5 3l5 3'/><path stroke-width='0.6' stroke-opacity='0.12' d='M78 226l4 2l4 2l6 2l4 2l4 3l7 2'/><path stroke-width='0.6' stroke-opacity='0.128' d='M873 139l4 0l6 2l5 1'/><path stroke-width='0.6' stroke-opacity='0.13' d='M562 277l-4 5l-3 4l-5 5'/><path stroke-width='0.6' stroke-opacity='0.141' d='M878 134l6 2l4 1'/><path stroke-width='0.6' stroke-opacity='0.18' d='M54 287l6 4l4 3l3 3l5 4l4 3'/><path stroke-width='0.6' stroke-opacity='0.183' d='M57 333l2 4l2 5l3 4'/><path stroke-width='0.6' stroke-opacity='0.191' d='M563 298l-4 4l-5 3l-5 4l-3 3l-4 2'/><path stroke-width='0.6' stroke-opacity='0.195' d='M824 506l-5 0l-7 0l-5 0l-6 -1'/><path stroke-width='0.6' stroke-opacity='0.196' d='M74 220l3 3l3 2l5 3l4 3l4 4'/><path stroke-width='0.6' stroke-opacity='0.211' d='M53 324l4 5l2 3l3 5l3 4l3 3l3 4'/><path stroke-width='0.6' stroke-opacity='0.219' d='M319 506l-4 4l-2 3l-3 3l-3 3l-3 3l-4 5l-3 3l-3 5'/><path stroke-width='0.6' stroke-opacity='0.222' d='M831 512l-5 1l-6 0l-5 1l-7 0'/></g></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='g' x='0%' y='0%' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' seed='19' stitchTiles='stitch'/><feColorMatrix type='matrix' values='.2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 0 0 0 0 1'/><feComponentTransfer><feFuncR type='linear' slope='0.4' intercept='0.3'/><feFuncG type='linear' slope='0.4' intercept='0.3'/><feFuncB type='linear' slope='0.4' intercept='0.3'/></feComponentTransfer></filter><rect width='120' height='120' filter='url(%23g)'/></svg>"),
+    radial-gradient(ellipse at 16% 22%, rgb(219 230 212 / 0.10), transparent 54%),
+    radial-gradient(ellipse at 80% 70%, rgb(22 42 40 / 0.15), transparent 62%),
+    radial-gradient(ellipse at 45% 80%, rgb(175 180 148 / 0.06), transparent 46%);
+  background-blend-mode: normal, normal, soft-light, normal, normal, normal;
+  background-size: 18px 18px, 960px 720px, 120px 120px, 100% 100%, 100% 100%, 100% 100%;
+  background-repeat: repeat, repeat, repeat, no-repeat, no-repeat, no-repeat;
+}
+/* App toolbar geometry, translucency and brand dimensions */
+.p-titlebar {
+  display: flex;
+  align-items: center;
+  flex: 0 0 64px;
+  padding: 12px 18px;
+  gap: 22px;
+  background: color-mix(in srgb, var(--p-panel) 70%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--p-line) 28%, transparent);
+}
+.p-brand { direction: ltr; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; user-select: none; }
+.p-brand-symbol {
+  display: block;
+  width: 34px;
+  height: 28px;
+}
+/* "MKC+" as outlines (scripts/generate-wordmark.py), sized and spaced like the app's
+   toolbar: 728 font units of ink at its 20px em, after the M's side bearing. The symbol
+   adds 1px around the ink, which the negative margins give back */
+.p-brand-wordmark { display: block; margin: -1px -1px -1px 0.35px; width: 51.26px; height: 16.56px; }
+.p-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--p-line);
+  background: var(--p-panel);
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 120ms ease;
+}
+.p-btn:active:not(:disabled) { transform: translateY(1px); }
+.p-btn:focus { outline: none; }
+.p-btn:focus-visible { box-shadow: 0 0 0 2px var(--p-bg), 0 0 0 3px var(--p-accent); }
+.theme-toggle { margin-inline-start: auto; width: 36px; height: 36px; padding: 8px; background: transparent; border-color: transparent; color: var(--p-muted); }
+/* Lit while pressed, and while pointed at only where something really points: a finger's
+   tap leaves the button hovered until the next tap elsewhere, and it looked stuck on. */
+.p-titlebar .p-btn:active:not(:disabled) { background: var(--p-hover); color: var(--p-accent); }
+.p-titlebar .p-btn:active:not(:disabled) svg { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--p-accent), transparent 45%)); }
+:root[data-theme="light"] .p-titlebar .p-btn:active:not(:disabled) { background: var(--p-selected); color: #667173; }
+:root[data-theme="light"] .p-titlebar .p-btn:active:not(:disabled) svg { filter: none; }
+@media (hover: hover) {
+  .p-titlebar .p-btn:hover:not(:disabled) { background: var(--p-hover); color: var(--p-accent); }
+  .p-titlebar .p-btn:hover:not(:disabled) svg { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--p-accent), transparent 45%)); }
+  :root[data-theme="light"] .p-titlebar .p-btn:hover:not(:disabled) { background: var(--p-selected); color: #667173; }
+  :root[data-theme="light"] .p-titlebar .p-btn:hover:not(:disabled) svg { filter: none; }
+}
+.theme-toggle .moon { display: none; }
+/* The language picker: the page's language by its code, and a menu of every language in its
+   own words, each a link to this page in that language */
+.lang-picker { position: relative; margin-inline-start: auto; }
+.lang-picker + .theme-toggle { margin-inline-start: -14px; }
+.lang-picker summary { list-style: none; gap: 6px; height: 36px; padding: 0 10px 0 8px; background: transparent; border-color: transparent; color: var(--p-muted); cursor: pointer; font: var(--w-medium) 13px/1 "MKC Interface", sans-serif; letter-spacing: .02em; user-select: none; }
+.lang-picker summary::-webkit-details-marker { display: none; }
+.lang-picker summary svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.p-titlebar .lang-picker[open] summary { background: var(--p-hover); color: var(--p-accent); }
+:root[data-theme="light"] .p-titlebar .lang-picker[open] summary { background: var(--p-selected); color: #667173; }
+/* The menu is a panel like the app's own, and like the Linux download choice: the same
+   background, line, radius and shadow, over the same dimmed and blurred backdrop the app
+   puts behind its Settings. Three columns filled downwards, so the names read
+   alphabetically down each one as a list of languages usually does, and so that 29 of them
+   are ten rows rather than fifteen: short enough that nothing has to scroll. */
+.lang-picker[open]::before { content: ""; position: fixed; inset: 0; z-index: 40; background: light-dark(#24344816, #060c1855); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.lang-menu { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 50; display: flex; flex-direction: column; max-height: calc(100dvh - 84px); padding: 18px 14px 14px; background: var(--p-panel); border: 1px solid var(--p-line); border-radius: 15px; box-shadow: 0 14px 40px light-dark(#172b4a26, #0007); transform-origin: top var(--lang-origin, right); }
+/* The panel arrives as the app's panels do. @starting-style is what gives a <details> an
+   entrance at all: without it the menu simply appears, which is the fallback. */
+@starting-style { .lang-picker[open] .lang-menu { opacity: 0; transform: translateY(-6px) scale(.985); } }
+.lang-menu { opacity: 1; transform: none; transition: opacity .18s ease, transform .18s cubic-bezier(.2, .8, .3, 1); }
+[dir="rtl"] .lang-menu { --lang-origin: left; }
+/* The title sits where the names do: the links carry 10px of their own padding. */
+.lang-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; padding: 0 10px; }
+/* Titled as the window's Settings is: the words alone, semibold */
+.lang-title { margin: 0; font-size: 16px; font-weight: var(--w-semibold); letter-spacing: -0.3px; color: var(--p-text); }
+/* The way out of a modal, in both of them: flat until it is pointed at, as the app's is. */
+.lang-close, .choice-close { display: grid; place-items: center; width: 28px; height: 28px; margin: -2px; margin-inline-end: -6px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--p-muted); cursor: pointer; }
+.lang-close svg, .choice-close svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lang-close:is(:hover, :focus-visible), .choice-close:is(:hover, :focus-visible) { background: var(--p-hover); color: var(--p-text); outline: none; }
+:root[data-theme="light"] .lang-close:is(:hover, :focus-visible), :root[data-theme="light"] .choice-close:is(:hover, :focus-visible) { background: var(--p-selected); }
+/* Only the list scrolls, and its gutter is reserved inside the panel's own padding, so
+   the scrollbar never sits on the rounded edge. Thin and muted, as the app's panels are. */
+.lang-list { margin: 0; padding: 0; list-style: none; display: grid; grid-auto-flow: column; grid-template-rows: repeat(10, auto); grid-auto-columns: minmax(176px, 1fr); gap: 2px 10px; min-height: 0; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--p-muted) 45%, transparent) transparent; }
+/* Every name starts at the same edge. A name in a right-to-left script carries dir="rtl"
+   so its own letters run the right way, which also right-aligned it in its cell and left
+   the list ragged: the alignment is the menu's, the direction is the name's. */
+.lang-menu a { display: block; padding: 7px 10px; border-radius: 6px; color: var(--p-text); text-decoration: none; font-size: 14px; line-height: 1.3; white-space: nowrap; text-align: start; unicode-bidi: isolate; }
+.lang-menu a[dir="rtl"] { text-align: left; }
+[dir="rtl"] .lang-menu a[dir="rtl"] { text-align: right; }
+[dir="rtl"] .lang-menu a:not([dir="rtl"]) { text-align: right; }
+.lang-menu a:is(:hover, :focus-visible) { background: var(--p-hover); color: var(--p-accent); outline: none; }
+:root[data-theme="light"] .lang-menu a:is(:hover, :focus-visible) { background: var(--p-selected); color: var(--p-text); }
+.lang-menu a[aria-current] { color: var(--p-accent); }
+:root[data-theme="light"] .lang-menu a[aria-current] { color: #9a7b16; }
+/* Narrower than the three columns need: two, then the phone's own full-width list. */
+@media (max-width: 900px) {
+  .lang-list { grid-template-rows: repeat(15, auto); }
+}
+@media (max-width: 760px) {
+  .lang-menu { position: fixed; left: 16px; right: 16px; top: 72px; max-height: calc(100dvh - 90px); }
+  /* As many columns as the width really holds, three on a wide phone and one on a narrow
+     one, still read down each column, and a name longer than its column wraps rather than
+     running into its neighbour: Español (Latinoamérica) did exactly that. The menu is the
+     screen less 60 px, and a column needs 150 */
+  .lang-list { grid-template-rows: repeat(10, auto); grid-auto-columns: minmax(0, 1fr); gap: 2px 10px; }
+  .lang-menu a { padding: 10px; white-space: normal; }
+}
+@media (max-width: 529px) { .lang-list { grid-template-rows: repeat(15, auto); } }
+@media (max-width: 369px) { .lang-list { grid-auto-flow: row; grid-template-rows: none; } }
+[data-theme="light"] .theme-toggle .sun { display: none; }
+[data-theme="light"] .theme-toggle .moon { display: block; }
+.download-area { min-height: calc(100vh - 64px); min-height: calc(100dvh - 64px); display: grid; place-items: center; padding: 32px 20px; }
+.download-content { display: flex; flex-direction: column; align-items: center; gap: 36px; width: 100%; max-width: 760px; }
+.download-content h1 { margin: 0; max-width: 760px; color: #edf0ed; font-family: var(--font-heading); font-size: clamp(46px, 5.4vw, 76px); font-weight: var(--w-medium); line-height: 1.085; letter-spacing: calc(-.045em * var(--heading-tracking)); text-align: center; text-wrap: balance; }
+.download-content h1 > span { display: block; color: #e9c45e; }
+:root[data-theme="dark"] .download-content h1 > span { color: var(--p-accent); }
+.download-options { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; max-width: 640px; }
+.download-note { margin: 0; color: #edf0edb3; font-size: 12px; line-height: 1.4; text-align: center; }
+.download-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: min(100%, 414px); }
+.download-button { min-height: 48px; min-width: 0; width: 100%; padding: 12px 18px; gap: 10px; font-size: 13px; justify-content: flex-start; }
+.download-button:hover:not(:disabled) { border-color: var(--p-accent); background: var(--p-selected); }
+.download-button:disabled { opacity: .35; cursor: default; }
+.download-arrow { margin-inline-start: auto; width: 15px; height: 15px; }
+/* Download buttons grow the logo's wings in the accent colour: while hovered, and for a moment
+   when clicked or tapped. Each bar stretches out from the button with the logo's slanted tip */
+.download-button { position: relative; z-index: 0; transition: background-color 140ms ease, border-color 140ms ease, transform 120ms ease, z-index 0s .3s; }
+/* Raised while the wings show, and until they have folded, so a later button never covers them */
+.download-button:is(:hover, .is-winged) { z-index: 1; transition-delay: 0s; }
+.download-wings { position: absolute; top: calc(50% - 14.5px); width: 42px; height: 29px; pointer-events: none; }
+.download-wings.is-left { right: calc(100% + 5px); }
+.download-wings.is-right { left: calc(100% + 5px); }
+.download-wings i { position: absolute; width: 0; height: 11.7px; background: var(--p-accent); transition: width .2s cubic-bezier(.5, 0, .9, .6); }
+.download-wings i:first-child { top: 0; --reach: 42px; --tip: 8.1px; transition-delay: 40ms; }
+.download-wings i:last-child { top: 17.3px; --reach: 30.1px; --tip: 8.1px; }
+.download-wings.is-left i { right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, var(--tip) 100%); }
+.download-wings.is-right i { left: 0; clip-path: polygon(0 0, 100% 0, calc(100% - var(--tip)) 100%, 0 100%); }
+:root[data-theme="dark"] .download-wings { filter: drop-shadow(0 0 5px color-mix(in srgb, var(--p-accent) 55%, transparent)); }
+.download-button.is-winged .download-wings i { width: var(--reach); transition: width .28s cubic-bezier(.2, .7, .3, 1); }
+.download-button.is-winged .download-wings i:last-child { transition-delay: 60ms; }
+@media (hover: hover) {
+  .download-button:hover .download-wings i { width: var(--reach); transition: width .28s cubic-bezier(.2, .7, .3, 1); }
+  .download-button:hover .download-wings i:last-child { transition-delay: 60ms; }
+}
+@media (min-width: 660px) {
+  .download-buttons { grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(100%, 628px); }
+}
+@media (min-width: 900px) {
+  .download-area { padding: 48px; }
+  .download-content { display: grid; grid-template-columns: minmax(0, 1fr) 240px; max-width: 940px; gap: 40px; }
+  .download-content h1 { text-align: start; text-wrap: pretty; }
+  .download-buttons { grid-template-columns: minmax(0, 1fr); width: 100%; }
+}
+@media (max-width: 700px) {
+  .download-content h1 { font-size: clamp(43px, 8.5vw, 63px); letter-spacing: -.05em; line-height: 1.075; }
+}
+@media (max-width: 440px) {
+  .download-button { padding-inline: 10px; gap: 6px; font-size: 12px; }
+}
+@media (max-width: 360px) {
+  .download-arrow { display: none; }
+}
+
+/* Seven feature sections below the download view, each with an animated scene (assets/scenes.js) */
+.features {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 20px 40px 120px;
+}
+.feature-section {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 36px;
+  min-height: 400px;
+  /* Room between the sections grows with the window: 18% of its height, 136 to 220 px */
+  padding: clamp(136px, 18vh, 220px) 0;
+  border-top: 1px solid rgb(184 202 192 / .14);
+  scroll-margin-top: 32px;
+}
+.feature-section.is-flip { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+.feature-section.is-flip h2 { order: 2; }
+.feature-section h2 {
+  color: #edf0ed;
+  font-family: var(--font-heading);
+  font-size: clamp(29px, 3.25vw, 40px);
+  font-weight: var(--w-medium);
+  line-height: 1.15;
+  letter-spacing: calc(-.03em * var(--heading-tracking));
+  /* Balance keeps the line breaks even; the cap sits close to the longest
+     balanced line so the centered box hugs the text instead of leaving it
+     stranded on a wide box's left edge. */
+  text-wrap: balance;
+  max-width: 320px;
+  margin: 0;
+}
+/* Every heading centers as a block in its column; the text inside stays
+   left-aligned, as text should be. */
+@media (min-width: 761px) {
+  .feature-section h2 { justify-self: center; }
+}
+.feature-6 h2 { font-size: clamp(28px, 3vw, 36px); }
+@media (max-width: 760px) {
+  .features { max-width: 600px; padding: 32px 24px 72px; }
+  .feature-section, .feature-section.is-flip, .feature-section.is-hands-on, .feature-section.is-strip { grid-template-columns: minmax(0, 1fr); gap: 20px; min-height: 0; padding: 44px 0 36px; }
+  .feature-section h2, .feature-section.is-flip h2 { order: 0; padding: 0; max-width: 410px; font-size: clamp(28px, 5.5vw, 36px); text-align: center; justify-self: center; }
+  .feature-6 h2 { max-width: 420px; }
+}
+@media (max-width: 380px) {
+  .features { padding-inline: 18px; }
+  .feature-section { gap: 16px; padding-block: 36px 28px; }
+}
+
+.p-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 24px;
+  border-top: 1px solid var(--p-line);
+  color: var(--p-muted);
+  font-size: 12px;
+}
+.p-footer nav { display: flex; gap: 16px; }
+.p-footer a { color: var(--p-muted); text-decoration: none; }
+.p-footer a:hover, .p-footer a:focus-visible { color: var(--p-accent); }
+
+/* The page fills the window, so a short one keeps the footer at the bottom */
+.p-doc {
+  flex-grow: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+.p-doc h1 {
+  margin: 0 0 4px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(28px, 4.5vw, 38px);
+  letter-spacing: calc(-.5px * var(--heading-tracking));
+}
+.p-doc h2 {
+  margin: 28px 0 6px;
+  font-size: 15px;
+  font-weight: var(--w-semibold);
+  color: var(--p-text);
+}
+.p-doc p, .p-doc li { margin: 0 0 10px; color: var(--p-muted); }
+.p-doc ul { margin: 0 0 10px; padding-inline-start: 20px; }
+.p-doc a:not(.p-btn) { color: var(--p-accent); text-decoration: none; }
+.p-doc a:not(.p-btn):hover, .p-doc a:not(.p-btn):focus-visible { text-decoration: underline; }
+.p-doc-date { font-size: 12px; }
+.p-doc-404 { text-align: center; padding-top: 96px; }
+.p-doc-404 a { display: inline-block; margin-top: 12px; }
+
+/* Light mode puts this text straight on the mid-tone canvas, where the app's
+   light-theme text colors, made for white panels, all but vanish. It takes light
+   canvas colors instead, like the download page's headings; even white reaches
+   only 4.8:1 on this canvas. */
+[data-theme="light"] .p-doc :is(h1, h2, p, li) { color: #f4f7f4; }
+[data-theme="light"] .p-doc .p-doc-date,
+[data-theme="light"] .p-footer,
+[data-theme="light"] .p-footer a { color: #edf0ed; }
+[data-theme="light"] .p-doc a:not(.p-btn),
+[data-theme="light"] .p-footer a:is(:hover, :focus-visible) { color: #f5e2a8; }
+
+/* The desk toy above the heading */
+.toy {
+  position: relative;
+  order: -1;
+  width: 100%;
+  height: 300px;
+  overflow: hidden; /* a box, like the app's arrangement canvas: screens show only inside it */
+  user-select: none;
+  -webkit-user-select: none;
+  --toy-line: rgb(214 224 240 / .78);
+  --toy-line-soft: rgb(214 224 240 / .4);
+  --toy-accent: #8ab4ff;
+  --toy-ink: #edf2fc;
+  --toy-bg: var(--p-bg);
+}
+[data-theme="light"] .toy {
+  --toy-line: rgb(248 250 246 / .88);
+  --toy-line-soft: rgb(248 250 246 / .45);
+  --toy-accent: #f0c24f;
+  --toy-ink: #f8faf6;
+  /* The light page as seen behind the toy: .p-window's #657572 under its glow and
+     texture, measured the same from 390 to 1920 px wide */
+  --toy-bg: #6b7b77;
+}
+.download-options { order: 1; }
+@media (min-width: 900px) {
+  .download-content { gap: 24px 40px; }
+  .toy { grid-column: 1; grid-row: 1; align-self: end; }
+  .download-content h1 { grid-column: 1; grid-row: 2; align-self: start; }
+  .download-options { grid-column: 2; grid-row: 1 / 3; }
+}
+.toy-world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.toy-screen { position: absolute; left: 0; top: 0; z-index: 1; cursor: grab; touch-action: none; --lift: 0; }
+.toy-screen.is-dragging { z-index: 3; cursor: grabbing; }
+/* A screen is just its outline, a little brighter while held */
+.toy-display {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1.6px solid var(--toy-line);
+  border-radius: 9px;
+  box-shadow: 0 0 calc(var(--lift) * 14px) color-mix(in srgb, var(--toy-accent) calc(var(--lift) * 45%), transparent);
+}
+.toy-dock {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 38%;
+  height: 9px;
+  border: 1.4px solid var(--toy-line-soft);
+  border-radius: 4px;
+  transform: translateX(-50%);
+}
+.toy-taskbar { position: absolute; inset: auto 0 0; height: 11px; border-top: 1.4px solid var(--toy-line-soft); }
+/* A phone: rounder corners, a camera hole and a gesture bar */
+.toy-android .toy-display { border-radius: 10px; }
+.toy-camera { position: absolute; left: 50%; top: 5px; width: 4px; height: 4px; border: 1.4px solid var(--toy-line-soft); border-radius: 50%; transform: translateX(-50%); }
+.toy-navbar { position: absolute; left: 50%; bottom: 5px; width: 36%; height: 0; border-top: 1.6px solid var(--toy-line-soft); border-radius: 2px; transform: translateX(-50%); }
+.toy-screen.is-idle .toy-camera, .toy-screen.is-idle .toy-navbar { border-color: color-mix(in srgb, var(--toy-line-soft) 55%, transparent); }
+/* Inside a screen, in layers: pasted files, windows, keystrokes and clicks, the pointer */
+.toy-layer { position: absolute; inset: 0; pointer-events: none; }
+/* Windows appear only while something happens in them */
+.toy-window {
+  position: absolute;
+  left: calc(var(--wx) * 100%);
+  top: calc(var(--wy) * 100%);
+  width: calc(var(--ww) * 100%);
+  height: calc(var(--wh) * 100%);
+  overflow: hidden;
+  border: 1.4px solid var(--toy-line);
+  border-radius: 5px;
+  opacity: 0;
+  transform: scale(.9);
+  transition: opacity .25s ease, transform .35s cubic-bezier(.2, 1.5, .4, 1);
+}
+.toy-window.is-shown { opacity: 1; transform: scale(1); }
+.toy-titlebar { height: 8px; border-bottom: 1.2px solid var(--toy-line-soft); }
+/* Text: three lines, and a selection that grows over the second as the pointer drags */
+.toy-line { position: absolute; left: 7px; top: calc(13px + var(--i) * 8px); width: calc((100% - 14px) * var(--len)); height: 3px; border-radius: 2px; background: var(--toy-line); }
+.toy-select { position: absolute; left: 5px; top: 19px; width: 0; height: 7px; border-radius: 2px; background: color-mix(in srgb, var(--toy-accent) 38%, transparent); }
+.toy-select.is-copied { animation: toy-copied .6s ease-out; }
+.toy-caret { position: absolute; top: 11px; width: 1.3px; height: 7px; background: var(--toy-ink); animation: toy-blink 1s steps(1) infinite; }
+/* A picture, framed while selected */
+.toy-picture { position: absolute; left: calc(50% - 15px); top: calc(50% - 7px); width: 30px; height: 22px; border-radius: 3px; }
+.toy-picture svg { display: block; width: 100%; height: 100%; fill: none; stroke: var(--toy-line); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.toy-picture.is-selected { outline: 1.3px solid var(--toy-accent); outline-offset: 2px; }
+.toy-picture.is-pasted { left: 7px; top: 13px; opacity: 0; transform: scale(.3); transform-origin: left top; }
+.toy-picture.is-pasted.is-shown { animation: toy-pop .5s cubic-bezier(.2, 1.6, .4, 1) forwards; }
+/* Files, in a window or pasted on the desktop */
+.toy-file { position: absolute; width: 13px; height: 16px; opacity: 0; transform: scale(.4); transition: opacity .25s, transform .35s cubic-bezier(.2, 1.6, .4, 1); }
+.toy-file svg { display: block; width: 100%; height: 100%; fill: none; stroke: var(--toy-line); stroke-width: 1.3; stroke-linejoin: round; }
+.toy-file.is-shown { opacity: 1; transform: scale(1); }
+.toy-window .toy-file { top: calc(50% - 4px); }
+.toy-file.is-selected svg { stroke: var(--toy-accent); fill: color-mix(in srgb, var(--toy-accent) 22%, transparent); }
+/* Whatever was just pasted glows for a moment */
+.toy-line.is-pasted { animation: toy-glow 1s ease-out; }
+.is-pasted svg { animation: toy-glow-stroke 1s ease-out; }
+/* Music: bars that dance while it plays, a play or pause button, a progress bar */
+.toy-eq { position: absolute; inset: 15px 0 19px; display: flex; justify-content: center; align-items: flex-end; gap: 3px; }
+.toy-bar { width: 3px; height: 100%; border-radius: 1px; background: var(--toy-line); transform-origin: bottom; animation: toy-eq .8s ease-in-out infinite alternate paused; }
+.toy-bar:nth-child(2) { animation-duration: .55s; animation-delay: -.3s; }
+.toy-bar:nth-child(3) { animation-duration: .7s; animation-delay: -.6s; }
+.toy-bar:nth-child(4) { animation-duration: .5s; animation-delay: -.15s; }
+.toy-bar:nth-child(5) { animation-duration: .65s; animation-delay: -.45s; }
+.is-playing .toy-bar { background: var(--toy-accent); animation-play-state: running; }
+.toy-controls { position: absolute; left: 7px; right: 7px; bottom: 6px; height: 8px; display: flex; align-items: center; gap: 5px; }
+.toy-play svg { display: block; width: 8px; height: 8px; fill: none; stroke: var(--toy-line); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.toy-icon-pause, .is-playing .toy-icon-play { display: none; }
+.is-playing .toy-icon-pause { display: inline; }
+.toy-progress { position: relative; flex: 1; height: 2px; overflow: hidden; border-radius: 1px; background: var(--toy-line-soft); }
+.toy-progress::after { content: ""; position: absolute; inset: 0; background: var(--toy-accent); transform-origin: left; animation: toy-progress 9s linear forwards paused; }
+.is-playing .toy-progress::after { animation-play-state: running; }
+/* A typed word, with the caret after it */
+.toy-typed { position: absolute; left: 7px; top: 12px; color: var(--toy-ink); font: var(--w-semibold) 10px/1 "MKC Interface", system-ui, sans-serif; white-space: nowrap; }
+.toy-caret-after { display: inline-block; width: 1.3px; height: 9px; margin-left: 1px; vertical-align: -1px; background: var(--toy-ink); animation: toy-blink 1s steps(1) infinite; }
+/* The volume, shown on the screen whose volume changes */
+.toy-hud { position: absolute; left: calc(50% - 36px); top: 9px; width: 72px; height: 15px; display: flex; align-items: center; gap: 5px; padding: 0 7px; border: 1.3px solid var(--toy-line); border-radius: 8px; background: var(--toy-bg); opacity: 0; transform: scale(.8); transition: opacity .2s, transform .3s cubic-bezier(.2, 1.6, .4, 1); }
+.toy-hud.is-shown { opacity: 1; transform: scale(1); }
+/* A phone's is narrower, to fit its screen */
+.toy-android .toy-hud { left: calc(50% - 20px); width: 40px; gap: 3px; padding: 0 5px; }
+.toy-hud svg { display: block; width: 10px; height: 8px; flex-shrink: 0; fill: none; stroke: var(--toy-line); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+.toy-level { position: relative; flex: 1; height: 2px; overflow: hidden; border-radius: 1px; background: var(--toy-line-soft); }
+.toy-level::after { content: ""; position: absolute; inset: 0; background: var(--toy-accent); transform-origin: left; transform: scaleX(var(--level)); transition: transform .18s ease-out; }
+/* A click, as a ring that opens under the pointer */
+.toy-click { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border: 1.2px solid var(--toy-accent); border-radius: 50%; animation: toy-click .42s ease-out forwards; }
+@keyframes toy-copied { 40% { background: color-mix(in srgb, var(--toy-accent) 80%, transparent); box-shadow: 0 0 6px var(--toy-accent); } }
+@keyframes toy-blink { 50% { opacity: 0; } }
+@keyframes toy-glow { from { background: var(--toy-accent); box-shadow: 0 0 6px var(--toy-accent); } }
+@keyframes toy-glow-stroke { from { stroke: var(--toy-accent); } }
+@keyframes toy-eq { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
+@keyframes toy-progress { from { transform: scaleX(.1); } to { transform: scaleX(1); } }
+@keyframes toy-click { from { opacity: .9; transform: scale(.25); } to { opacity: 0; transform: scale(1); } }
+/* Android 14's arrow cursor (public domain, rw-designer 254107), traced from its 128 px
+   image. The first path is its silhouette, filled with the page colour so nothing shows
+   through the inside; the second is its white edge, stroked 2 units (about 0.35 px) heavier
+   so it stays solid at this size. The hotspot sits at (8.5, 5.5) in the 64 x 73 viewBox,
+   so the margin keeps it on the pointer's position */
+.toy-pointer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 11px;
+  height: 12.55px;
+  margin: -0.95px 0 0 -1.46px;
+  opacity: 0; /* hidden until a screen's turn shows it */
+  transform-origin: 1.46px 0.95px; /* clicks scale it around the hotspot */
+}
+.toy-pointer svg { display: block; width: 100%; height: 100%; overflow: visible; fill: var(--toy-accent); stroke: var(--toy-accent); stroke-width: 2; stroke-linejoin: round; }
+.toy-pointer path:first-child { fill: var(--toy-bg); stroke: none; }
+/* Keystrokes, as little keycaps inside the screen */
+.toy-chord {
+  position: absolute;
+  bottom: 22px;
+  display: flex;
+  gap: 3px;
+  transform: translateX(-50%);
+  animation: toy-chord .9s ease-out forwards;
+}
+.toy-key {
+  min-width: 16px;
+  padding: 2px 4px;
+  border: 1.3px solid var(--toy-line);
+  border-radius: 4px;
+  box-shadow: 0 1.5px 0 var(--toy-line-soft);
+  color: var(--toy-ink);
+  font: var(--w-semibold) 9px/1.2 "MKC Interface", system-ui, sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+.toy-key svg { display: block; width: 11px; height: 9px; margin: 0 auto; fill: none; stroke: var(--toy-ink); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes toy-chord {
+  0% { opacity: 0; transform: translate(-50%, 6px) scale(.7); }
+  18% { opacity: 1; transform: translate(-50%, 0) scale(1.08); }
+  30% { transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -14px); }
+}
+.toy-seam {
+  position: absolute;
+  z-index: 2;
+  width: 3px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--toy-accent);
+  box-shadow: 0 0 6px var(--toy-accent), 0 0 16px color-mix(in srgb, var(--toy-accent) 60%, transparent);
+  pointer-events: none;
+}
+.toy-seam.is-born { animation: toy-seam-in .55s cubic-bezier(.2, 1.5, .4, 1); }
+.toy-seam-y.is-born { animation-name: toy-seam-in-y; }
+.toy-seam.is-pulse { animation: toy-seam-pulse .45s ease-out; }
+.toy-seam.is-breaking { animation: toy-seam-out .38s ease-in forwards; }
+.toy-ghost { opacity: 0; transition: opacity .15s; }
+/* While a dragged screen overlaps another: where it will land, as in the app */
+.toy-landing { position: absolute; left: 0; top: 0; z-index: 0; border: 1.5px dashed var(--toy-accent); border-radius: 9px; background: color-mix(in srgb, var(--toy-accent) 7%, transparent); opacity: 0; transition: opacity .15s; pointer-events: none; }
+.toy-landing.is-shown { opacity: 1; }
+/* The pull between a dragged screen and the nearest edge facing it, stronger as they near */
+.toy-pull { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 6px; background: color-mix(in srgb, var(--toy-accent) 16%, transparent); filter: blur(3px); pointer-events: none; }
+.toy-pull-edge { position: absolute; left: 0; top: 0; z-index: 2; border-radius: 2px; background: var(--toy-accent); box-shadow: 0 0 7px var(--toy-accent); pointer-events: none; }
+.toy-ghost.is-shown { animation: toy-ghost 1s ease-in-out infinite; }
+@keyframes toy-seam-in { 0% { opacity: 0; transform: scale(1, 0); filter: brightness(2.2); } 40% { opacity: 1; filter: brightness(2.2); } 100% { transform: scale(1); filter: brightness(1); } }
+@keyframes toy-seam-in-y { 0% { opacity: 0; transform: scale(0, 1); filter: brightness(2.2); } 40% { opacity: 1; filter: brightness(2.2); } 100% { transform: scale(1); filter: brightness(1); } }
+@keyframes toy-seam-pulse { 0% { filter: brightness(2.4); box-shadow: 0 0 10px var(--toy-accent), 0 0 30px var(--toy-accent); } 100% { filter: brightness(1); } }
+@keyframes toy-seam-out { to { opacity: 0; transform: scale(1.6); } }
+@keyframes toy-ghost { 0%, 100% { opacity: .25; } 50% { opacity: .7; } }
+.toy-spark {
+  position: absolute;
+  z-index: 5;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--toy-accent);
+  box-shadow: 0 0 6px var(--toy-accent);
+  pointer-events: none;
+  animation: toy-spark .6s cubic-bezier(.2, .8, .3, 1) forwards;
+}
+@keyframes toy-spark { to { transform: translate(var(--sx), var(--sy)) scale(.2); opacity: 0; } }
+@keyframes toy-pop { to { opacity: 1; transform: scale(1); } }
+/* Screens not in use wait, dimmed, without a pointer */
+.toy-display, .toy-dock, .toy-taskbar { transition: border-color .4s ease; }
+.toy-screen.is-idle .toy-display { border-color: var(--toy-line-soft); }
+.toy-screen.is-idle .toy-dock, .toy-screen.is-idle .toy-taskbar { border-color: color-mix(in srgb, var(--toy-line-soft) 55%, transparent); }
+.toy-pointer { transition: opacity .3s ease; }
+/* Light theme: screen outlines a little heavier, drawn about 1.8 pixels (docks and taskbars 1.4)
+   however large or small the camera shows them. Browsers round a border down to whole device
+   pixels before the camera scales it, so the camera picks the widths (--edge, --edge-soft) */
+[data-theme="light"] :is(.toy, .scene) .toy-display { border-width: var(--edge, 1.6px); }
+[data-theme="light"] :is(.toy, .scene) .toy-dock { border-width: var(--edge-soft, 1.4px); }
+[data-theme="light"] :is(.toy, .scene) .toy-taskbar { border-top-width: var(--edge-soft, 1.4px); }
+[data-theme="light"] :is(.toy, .scene) .toy-camera { border-width: var(--edge-soft, 1.4px); }
+[data-theme="light"] :is(.toy, .scene) .toy-navbar { border-top-width: var(--edge-soft, 1.6px); }
+
+/* The feature scenes, drawn like the desk toy (assets/scenes.js) */
+.scene {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  --toy-line: rgb(214 224 240 / .78);
+  --toy-line-soft: rgb(214 224 240 / .4);
+  --toy-line-dim: rgb(214 224 240 / .15);
+  --toy-accent: #8ab4ff;
+  --toy-ink: #edf2fc;
+  --toy-bg: var(--p-bg);
+}
+[data-theme="light"] .scene {
+  --toy-line: rgb(248 250 246 / .88);
+  --toy-line-soft: rgb(248 250 246 / .45);
+  --toy-line-dim: rgb(248 250 246 / .2);
+  --toy-accent: #f0c24f;
+  --toy-ink: #f8faf6;
+  --toy-bg: #6b7b77;
+}
+/* The shots differ in shape as well as in what they show */
+.scene[data-story="control"] { aspect-ratio: 2 / 1; }
+.scene[data-story="arrange"] { aspect-ratio: 16 / 11; }
+.scene[data-story="copyPaste"] { aspect-ratio: 3 / 1; }
+.scene[data-story="pairing"] { aspect-ratio: 2 / 1; }
+.scene-world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+/* Scenes are to watch, except the desk arranged by hand; over the rest, touch scrolls the page */
+.scene .toy-screen { pointer-events: none; touch-action: auto; }
+.scene[data-story="arrange"] .toy-screen { pointer-events: auto; touch-action: none; cursor: grab; }
+.scene[data-story="arrange"] .toy-screen.is-dragging { cursor: grabbing; }
+.scene-pointer { z-index: 4; pointer-events: none; }
+/* Control: a keyboard and mouse in front of the PC's screen, a keyboard and trackpad in the
+   laptop's base; the pair in use lights up, the other waits dimmed */
+.scene-keyboard, .scene-mouse { position: absolute; left: 0; top: 0; overflow: visible; fill: none; stroke: var(--toy-line-dim); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; transition: stroke .35s, filter .35s; }
+.scene-keyboard.is-active, .scene-mouse.is-active { stroke: var(--toy-line); filter: drop-shadow(0 0 5px color-mix(in srgb, var(--toy-accent) 45%, transparent)); }
+.scene-key { stroke-width: 1; transition: fill .12s, stroke .12s; }
+.scene-key.is-pressed { fill: var(--toy-accent); stroke: var(--toy-accent); }
+.scene-mouse .scene-mouse-button { stroke: none; fill: transparent; transition: fill .12s; }
+.scene-mouse.is-click .scene-mouse-button { fill: var(--toy-accent); }
+.scene-trackpad { transition: fill .12s; }
+.scene-trackpad.is-click { fill: color-mix(in srgb, var(--toy-accent) 35%, transparent); }
+/* A finger on a trackpad or on the phone's Remote */
+.scene-touch { position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; border: 1.2px solid var(--toy-accent); border-radius: 50%; background: color-mix(in srgb, var(--toy-accent) 35%, transparent); box-shadow: 0 0 5px var(--toy-accent); opacity: 0; transition: opacity .25s, scale .2s; }
+.scene-touch.is-shown { opacity: 1; }
+.scene-touch.is-tap { scale: 1.5; }
+.scene-finger { width: 7px; height: 7px; left: -3.5px; top: -3.5px; z-index: 2; }
+/* The phone's Remote, a touchpad over its own keyboard, shown while the phone drives another
+   device */
+.scene-remote { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; fill: none; stroke: var(--toy-line); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity .35s; filter: drop-shadow(0 0 4px color-mix(in srgb, var(--toy-accent) 40%, transparent)); }
+.scene-remote.is-shown { opacity: 1; }
+.scene-remote .scene-key { stroke-width: .8; }
+/* A key's letter pops up above the keyboard, rising less than the toy's so it stays clear of
+   the screen */
+.scene-chord { bottom: auto; z-index: 3; animation-name: scene-chord; }
+@keyframes scene-chord {
+  0% { opacity: 0; transform: translate(-50%, 4px) scale(.7); }
+  18% { opacity: 1; transform: translate(-50%, 0) scale(1.08); }
+  30% { transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -8px); }
+}
+/* The clipboard on its way over: the copied line, or a file, riding beside the pointer */
+.scene-chip { position: absolute; left: 0; top: 0; z-index: 3; border-radius: 3px; background: var(--toy-accent); box-shadow: 0 0 6px var(--toy-accent), 0 0 14px color-mix(in srgb, var(--toy-accent) 55%, transparent); pointer-events: none; }
+.scene-rider { position: absolute; left: 0; top: 0; z-index: 3; width: 13px; height: 16px; pointer-events: none; }
+.scene-rider svg { display: block; width: 100%; height: 100%; fill: color-mix(in srgb, var(--toy-accent) 22%, transparent); stroke: var(--toy-accent); stroke-width: 1.3; stroke-linejoin: round; filter: drop-shadow(0 0 3px var(--toy-accent)); }
+/* A file still copying: faint, inside a ring that fills, then whole */
+.toy-file.is-shown.is-arriving { opacity: .4; }
+.scene-ring { position: absolute; width: 36px; height: 36px; overflow: visible; fill: none; stroke-width: 1.6; opacity: 0; transform: rotate(-90deg) scale(.7); transition: opacity .25s, transform .35s cubic-bezier(.2, 1.5, .4, 1); }
+.scene-ring.is-shown { opacity: 1; transform: rotate(-90deg); }
+.scene-ring circle { stroke: var(--toy-line-soft); }
+.scene-ring .scene-ring-done { stroke: var(--toy-accent); stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; filter: drop-shadow(0 0 3px var(--toy-accent)); }
+.scene-ring.is-done { opacity: 0; transform: rotate(-90deg) scale(1.4); transition: opacity .45s ease-out, transform .45s ease-out; }
+/* Pairing: the same code on both screens, and one button */
+.scene-code { position: absolute; left: 0; right: 0; top: calc(50% - 11px); color: var(--toy-ink); font: var(--w-semibold) 15px/1 "MKC Interface", system-ui, sans-serif; letter-spacing: .06em; text-align: center; transition: color .3s; }
+.scene-code.is-matched { color: var(--toy-accent); }
+.scene-pair { position: absolute; right: 8px; bottom: 7px; padding: 2px 9px; border: 1.2px solid var(--toy-accent); border-radius: 5px; color: var(--toy-accent); font: var(--w-semibold) 8px/1.3 "MKC Interface", system-ui, sans-serif; transition: background-color .15s, color .15s; }
+.scene-pair.is-pressed { background: var(--toy-accent); color: var(--toy-bg); }
+/* Reconnection: every link with its latency, the fastest in use, and the traffic on it */
+.scene-links { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; fill: none; stroke: var(--toy-line-soft); stroke-width: 1.4; stroke-linecap: round; }
+.scene-links path { transition: stroke .3s, stroke-width .3s; }
+.scene-links path.is-active { stroke: var(--toy-accent); stroke-width: 2; filter: drop-shadow(0 0 4px var(--toy-accent)); }
+.scene-links path.is-dead { stroke-dasharray: 3 5; opacity: .5; }
+.scene-badge { position: absolute; z-index: 3; display: flex; gap: 5px; align-items: center; height: 22px; margin-top: -11px; padding: 0 8px 0 6px; border: 1.3px solid var(--toy-line-soft); border-radius: 11px; background: var(--toy-bg); transform: translateX(-50%); transition: opacity .3s, border-color .3s, box-shadow .3s; }
+.scene-badge svg { display: block; width: 14px; height: 13px; fill: none; stroke: var(--toy-line-soft); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+.scene-badge.is-on { border-color: var(--toy-accent); box-shadow: 0 0 8px color-mix(in srgb, var(--toy-accent) 45%, transparent); }
+.scene-badge.is-on svg { stroke: var(--toy-accent); }
+.scene-badge.is-dead { opacity: .45; }
+.scene-ms { color: var(--toy-line); font: var(--w-semibold) 9px/1 "MKC Interface", system-ui, sans-serif; white-space: nowrap; transition: color .3s; }
+.scene-badge.is-on .scene-ms { color: var(--toy-accent); }
+.scene-dot { position: absolute; left: -2.5px; top: -2.5px; z-index: 2; width: 5px; height: 5px; border-radius: 50%; background: var(--toy-accent); box-shadow: 0 0 6px var(--toy-accent); pointer-events: none; }
+.scene-dot.is-probe { left: -1.5px; top: -1.5px; width: 3px; height: 3px; background: var(--toy-line); box-shadow: none; opacity: .7; }
+/* Desktop: the hands-on desk gets the most room, copy & paste is a short strip, and pairing
+   stands centred under its heading, as wide as the page allows */
+@media (min-width: 761px) {
+  .feature-section.is-hands-on { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); min-height: 540px; }
+  .feature-section.is-strip { grid-template-columns: minmax(0, .6fr) minmax(0, 1.4fr); min-height: 0; }
+  .feature-section.is-centred { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 28px; }
+  .feature-section.is-centred h2 { max-width: none; text-align: center; }
+  .feature-section.is-centred .scene { max-width: min(100%, 1040px); aspect-ratio: 3 / 1; }
+}
+/* Unlimited devices is a band across the whole window, its heading over a grid of screens */
+.p-window { overflow-x: clip; }
+.feature-section.feature-band {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100vw;
+  min-height: 0;
+  /* Its neighbours' padding and its own faded edges already set it apart */
+  margin: clamp(40px, 6vh, 80px) calc(50% - 50vw);
+  padding: 0;
+  border-top: 0;
+}
+.feature-band > * { grid-area: 1 / 1; }
+.feature-band h2 { position: relative; z-index: 1; place-self: center; max-width: none; font-size: clamp(34px, 4.6vw, 64px); text-align: center; }
+.feature-band .scene {
+  aspect-ratio: auto;
+  height: 460px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+.feature-band + .feature-section { border-top: 0; }
+/* So many seams glow softer; a wave lights them up as it passes */
+.feature-band .toy-seam { opacity: .5; }
+/* Phones: a feed of cards, one section per screen. The window scrolls in place of the page and
+   snaps to each card, one per swipe; the hero, with the toolbar above it, is the first card and
+   scrolls within itself when it is taller than the screen, and the footer ends the feed */
+@media (max-width: 760px) {
+  html, body { height: 100%; overflow: hidden; }
+  .p-window {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+  }
+  .download-area { scroll-snap-align: start; scroll-margin-top: 64px; }
+  .features { max-width: none; padding: 0; }
+  .feature-section, .feature-section.is-flip, .feature-section.is-hands-on, .feature-section.is-strip {
+    height: 100vh;
+    height: 100dvh;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-content: stretch;
+    gap: 24px;
+    padding: 64px 0 40px;
+    border-top: 0;
+    scroll-margin-top: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .feature-section h2 { padding-inline: 18px; }
+  /* Each scene fills its card below the heading, and its story stands up where it has a tall
+     version, so nothing in it is cut off while the card has room */
+  .feature-section .scene { align-self: stretch; height: auto; aspect-ratio: auto; }
+  /* A scene keeps the shape of what its story shows on a phone, in the middle of its card, and
+     the heading sits midway between the card's top and the scene; a short screen, as a phone
+     on its side, makes the scene smaller rather than cut it off */
+  .feature-section:is(.feature-1, .feature-2, .feature-4, .feature-5, .feature-6) { grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 0; padding-block: 0; }
+  :is(.feature-1, .feature-2, .feature-4, .feature-5, .feature-6) h2 { grid-row: 2; }
+  :is(.feature-1, .feature-2, .feature-4, .feature-5, .feature-6) .scene { grid-row: 4; align-self: center; justify-self: center; width: min(100%, 62dvh * var(--shape)); aspect-ratio: var(--shape); }
+  .feature-1 .scene { --shape: 480 / 242; }
+  .feature-2 .scene { --shape: 423 / 257; }
+  .feature-4 .scene { --shape: 238 / 271; }
+  .feature-5 .scene { --shape: 238 / 328; }
+  .feature-6 .scene { --shape: 366 / 267; }
+  /* The band fills its card, its heading over the middle */
+  .feature-section.feature-band {
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    grid-template-rows: minmax(0, 1fr);
+    align-content: stretch;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .feature-band h2 { font-size: clamp(32px, 9vw, 40px); }
+  .feature-band .scene { align-self: stretch; height: auto; }
+  /* Only the feed's footer is a resting place: on the terms and 404 pages (main.p-doc) it would
+     be the one snap point, and the page would open at its end and spring back there */
+  main:not(.p-doc) ~ .p-footer { scroll-snap-align: end; }
+}
+
+/* The Linux download choice. Linux is the one platform the page cannot choose for the
+   person: the browser never says which distribution this is, so the choice is theirs. The
+   panel is the app's own preferences panel, in the app's tokens. */
+.choice-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: light-dark(#1b263a40, #0009);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease;
+}
+.choice-layer[data-open="true"] { opacity: 1; pointer-events: auto; }
+.choice {
+  width: 340px;
+  max-width: calc(100vw - 2rem);
+  background: var(--p-panel);
+  border: 1px solid var(--p-line);
+  border-radius: 15px;
+  /* The same 20px on every side: the close button's corner sits as far from the panel's
+     top and right edges as the last row sits from its bottom */
+  padding: 20px;
+  box-shadow: 0 14px 40px light-dark(#172b4a26, #0007);
+  /* It rises without growing: a scaled panel is redrawn at its full size once it lands, and
+     the switch, which sits between whole pixels, visibly jumped as that happened. */
+  transform: translateY(6px);
+  transition: transform .18s cubic-bezier(.2, .8, .3, 1);
+}
+.choice-layer[data-open="true"] .choice { transform: none; }
+.choice-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 14px;
+  /* The header spans the rows' own width: the logo starts at their left edge and the
+     close button ends at their right edge. Every height in it is whole pixels, so nothing
+     in it lands between pixels. */
+  padding: 0;
+}
+.choice-head h2 {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: var(--w-semibold);
+  letter-spacing: -0.3px;
+  color: var(--p-text);
+}
+.choice-head h2 svg { width: 17px; height: 17px; }
+.choice-head .choice-close { margin: 0; }
+.choice-arch {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 8px;
+  background: light-dark(#0000000d, #ffffff0f);
+}
+.choice-arch button {
+  font: inherit;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: var(--w-medium);
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--p-muted);
+  cursor: pointer;
+}
+.choice-arch button[aria-pressed="true"] {
+  background: var(--p-panel);
+  color: var(--p-text);
+  box-shadow: 0 1px 3px #0002;
+}
+.choice-list { display: flex; flex-direction: column; gap: 6px; }
+.choice-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--p-line);
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .15s ease, background .15s ease;
+}
+.choice-row:hover,
+.choice-row:focus-visible {
+  border-color: var(--p-text);
+  background: light-dark(#00000008, #ffffff0a);
+  outline: none;
+}
+.choice-row[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+.choice-row > div { flex: 1; min-width: 0; }
+.choice-kind {
+  font-size: 13px;
+  font-weight: var(--w-semibold);
+  color: var(--p-text);
+  /* A file extension is Latin and begins with a full stop, which is a neutral: in
+     right-to-left text it drifts to the other side and .deb reads as deb. The name runs
+     left to right wherever it is, and keeps the row's own alignment. */
+  direction: ltr;
+}
+[dir="rtl"] .choice-kind { text-align: right; }
+.choice-for { margin-top: 2px; font-size: 11px; color: var(--p-muted); }
+.choice-arrow { flex: none; width: 15px; height: 15px; color: var(--p-muted); }

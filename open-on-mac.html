@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#191e27">
+  <meta name="description" content="MKC+ is a free beta app for using one mouse and keyboard across your Windows PCs, Apple silicon Macs and Android phones, tablets and TVs on the same local network.">
+  <link rel="canonical" href="https://mkcplus.com/open-on-mac.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="./assets/app-icon.png">
+  <link rel="preload" href="./assets/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="./site.js?v=07e9236a"></script>
+  <script defer src="./assets/icons.js"></script>
+  <title>Open MKC+ on a Mac | MKC+</title>
+  <link rel="stylesheet" href="./styles.css?v=0ca6d167">
+  <style>
+    .p-shot { margin: 0 0 14px; }
+    .p-shot img { display: block; max-width: 100%; height: auto; }
+    [data-theme="light"] .p-shot .dark, [data-theme="dark"] .p-shot .light { display: none; }
+    .p-doc h2 { margin: 36px 0 8px; font-family: Outfit, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -.2px; }
+    .p-step-beside { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; align-items: center; }
+    .p-step-beside .p-shot { margin: 0; }
+    .p-shot-pair { display: flex; }
+    .p-shot-pair > div { flex: 0 1 372px; min-width: 0; }
+    @media (max-width: 640px) {
+      .p-step-beside { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="p-window">
+    <header class="p-titlebar">
+      <a class="p-brand" href="./" aria-label="MKC+ home">
+        <svg class="p-brand-symbol" aria-hidden="true"><use href="#i-brand"/></svg>
+        <svg class="p-brand-wordmark" aria-hidden="true"><use href="#i-wordmark"/></svg>
+      </a>
+      <button type="button" class="p-btn theme-toggle" aria-label="Switch color theme">
+        <svg class="sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+    </header>
+    <main class="p-doc" data-download="https://github.com/arxidaki/mkcplus-releases/releases/latest/download/MKC%2B.dmg">
+      <h1>Open MKC+ on a Mac</h1>
+      <p>MKC+ is not signed with an Apple Developer certificate yet, so the first time you open it, macOS stops it and asks you to approve it. You do this once.</p>
+
+      <div class="p-step-beside">
+        <div>
+          <h2>1. Open the installer</h2>
+          <p>Open MKC+.dmg and double-click MKC+-Install. macOS says it could not verify that MKC+-Install is free of malware. Click Done.</p>
+        </div>
+        <div class="p-shot">
+          <img class="light" src="./assets/open-on-mac/step1-light.webp" width="372" height="362" alt="The message that MKC+-Install was not opened, with a Done button">
+          <img class="dark" src="./assets/open-on-mac/step1-dark.webp" width="372" height="362" alt="The message that MKC+-Install was not opened, with a Done button">
+        </div>
+      </div>
+
+      <h2>2. Click Open Anyway</h2>
+      <p>Open System Settings, then Privacy &amp; Security. Scroll down to Security, where it says MKC+-Install was blocked, and click Open Anyway.</p>
+      <div class="p-shot">
+        <img class="light" src="./assets/open-on-mac/step2-light.webp" width="835" height="582" alt="System Settings, Privacy and Security, with MKC+-Install blocked and an Open Anyway button in the Security section">
+        <img class="dark" src="./assets/open-on-mac/step2-dark.webp" width="835" height="582" alt="System Settings, Privacy and Security, with MKC+-Install blocked and an Open Anyway button in the Security section">
+      </div>
+
+      <h2>3. Confirm</h2>
+      <p>Click Open Anyway again, then enter your Mac's password or use Touch ID, and click OK. MKC+-Install opens and installs MKC+.</p>
+      <div class="p-shot p-shot-pair">
+        <div>
+          <img class="light" src="./assets/open-on-mac/step3a-light.webp" width="372" height="428" alt="The question whether to open MKC+-Install, with an Open Anyway button">
+          <img class="dark" src="./assets/open-on-mac/step3a-dark.webp" width="372" height="428" alt="The question whether to open MKC+-Install, with an Open Anyway button">
+        </div>
+        <div>
+          <img class="light" src="./assets/open-on-mac/step3b-light.webp" width="372" height="472" alt="The Privacy and Security prompt for an administrator's password, with Cancel and OK">
+          <img class="dark" src="./assets/open-on-mac/step3b-dark.webp" width="372" height="472" alt="The Privacy and Security prompt for an administrator's password, with Cancel and OK">
+        </div>
+      </div>
+
+      <p>After that, MKC+ opens like any other app and updates itself.</p>
+    </main>
+    <footer class="p-footer">
+      <span class="p-footer-brand">MKC+ · free beta</span>
+      <nav aria-label="Site">
+        <a href="./questions.html">Questions</a>
+        <a href="./terms.html">Terms</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="https://github.com/arxidaki/mkcplus-releases/releases" rel="noopener">Changelog</a>
+        <a href="https://github.com/arxidaki" rel="noopener">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
