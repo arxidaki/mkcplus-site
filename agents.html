@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#191e27">
+  <meta name="description" content="How to add MKC+ to Claude Code, Codex, Copilot and other AI agents, so they can see and use the devices of your MKC+ group.">
+  <link rel="canonical" href="https://mkcplus.com/agents.html">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="./assets/app-icon.png">
+  <link rel="preload" href="./assets/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="./site.js?v=1ea57d89"></script>
+  <script defer src="./assets/icons.js"></script>
+  <title>Agents | MKC+</title>
+  <link rel="stylesheet" href="./styles.css?v=c916c010">
+  <style>
+    /* The Agents page, which MKC+'s window opens from Agents, Add an agent: a page of the
+       site's (.p-doc, as Questions) holding the Agents choice the owner approved as a
+       dialog (the mockup of 2026-11-16), every row open. The panel is .choice's, the rows
+       .choice-row's without a hover (nothing to press but the copy), the lines
+       .choice-for's. The switcher is the app's Appearance switcher, which sits on a panel
+       as it does here. */
+    .agents-panel { margin-top: 24px; padding: 20px; background: var(--p-panel); border: 1px solid var(--p-line); border-radius: 15px; box-shadow: 0 14px 40px light-dark(#172b4a26, #0007); }
+    .agents-switch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; padding: 3px; margin: 0 0 14px; border-radius: 11px; background: var(--p-bg); }
+    .agents-switch button { display: flex; align-items: center; justify-content: center; gap: 5px; min-width: 0; padding: 8px 3px; border: 0; border-radius: 8px; background: none; color: var(--p-muted); font: inherit; font-size: 12px; line-height: 17.4px; cursor: pointer; transition: background-color 140ms ease, box-shadow 140ms ease, transform 120ms ease; }
+    .agents-switch button svg { width: 15px; height: 15px; flex: none; }
+    .agents-switch button:hover { color: var(--p-accent); }
+    .agents-switch button:active { transform: scale(0.94); }
+    .agents-switch button[aria-pressed="true"] { color: var(--p-accent); background: var(--p-panel); box-shadow: 0 1px 4px light-dark(#233b5b17, #00000040); }
+    /* Each agent carries a block of code, so the rows stand further apart than the Linux
+       choice's one-line rows (6 px there): 14 px, as the switcher stands from the first. */
+    .agents-panel .choice-list { gap: 14px; }
+    .agent { padding: 10px 12px 12px; border: 1px solid var(--p-line); border-radius: 10px; }
+    .p-doc .agents-panel .agent h2, [data-theme] .p-doc .agents-panel .agent h2 { margin: 0; font-size: 13px; line-height: 18px; font-weight: var(--w-semibold); color: var(--p-text); }
+    .agent .choice-for { margin: 2px 0 9px; }
+    .agent .agent-code + .choice-for { margin-top: 10px; }
+    /* The one line about a system as a whole (the AppImage on Linux): the rows' own lines,
+       standing from the first row as the switcher does. */
+    .agents-note { margin: 0 0 14px; line-height: 17px; }
+    .agents-note b { font-weight: var(--w-medium); color: var(--p-text); white-space: nowrap; }
+    /* A row shared by agents that take the same text: one line for each, saying where it goes. */
+    /* Inside the page's own rules for lists (indent, gaps, and pale words in the light theme),
+       which are for prose on the page's ground, not for a panel. */
+    [data-theme] .p-doc .agent-where { margin: 4px 0 9px; padding: 0; list-style: none; }
+    [data-theme] .p-doc .agent-where li { margin: 0; font-size: 11px; line-height: 17px; color: var(--p-muted); }
+    [data-theme] .p-doc .agent-where li b { font-weight: var(--w-medium); color: var(--p-text); }
+    /* A grid whose text column may shrink to nothing: a long line scrolls in its box and
+       never widens the page around it. */
+    .agent-code { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 8px; padding: 8px 6px 8px 10px; border-radius: 8px; background: var(--p-bg); }
+    .agent-code pre { margin: 0; padding-top: 4px; font: 11.5px/17px ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--p-text); white-space: pre-wrap; overflow-wrap: normal; overflow-x: auto; scrollbar-width: thin; }
+    .agent-copy { flex: none; display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--p-muted); cursor: pointer; transition: background-color 140ms ease, color 140ms ease, transform 120ms ease; }
+    .agent-copy svg { width: 15px; height: 15px; }
+    .agent-copy:hover, .agent-copy:focus-visible { background: var(--p-hover); color: var(--p-text); outline: none; }
+    :root[data-theme="light"] .agent-copy:hover, :root[data-theme="light"] .agent-copy:focus-visible { background: var(--p-selected); }
+    .agent-copy:active { transform: scale(0.94); }
+    /* A phone: the panel and its rows give the code more of the screen, and code keeps its
+       lines whole and scrolls sideways in its box, as code does on a phone. Wider screens
+       wrap it at its spaces, where every line fits. */
+    @media (max-width: 560px) {
+      .agents-panel { margin-top: 20px; padding: 12px; border-radius: 13px; }
+      .agents-switch { margin-bottom: 10px; }
+      .agent { padding: 10px 10px 10px; }
+      .agent-code pre { white-space: pre; }
+    }
+  </style>
+</head>
+<body>
+  <div class="p-window">
+    <header class="p-titlebar">
+      <a class="p-brand" href="./" aria-label="MKC+ home">
+        <svg class="p-brand-symbol" aria-hidden="true"><use href="#i-brand"/></svg>
+        <svg class="p-brand-wordmark" aria-hidden="true"><use href="#i-wordmark"/></svg>
+      </a>
+      <button type="button" class="p-btn theme-toggle" aria-label="Switch color theme">
+        <svg class="sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+    </header>
+    <main class="p-doc">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 16a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+      </svg>
+      <h1>Agents</h1>
+      <p>Add MKC+ to your AI agent on the device the agent runs on, with MKC+ installed there. The first time the agent uses MKC+, the MKC+ window on that device asks you to allow it. Each device then asks before the agent first uses it, and, where the device can tell which app is in front, before it first uses each app there.</p>
+      <p>MKC+ sends nothing about agents anywhere: there is no account, relay or telemetry, and each device keeps its own record of what agents did there. What an agent sees, it sends to its own service, as with anything else you show it.</p>
+      <p>On Android, agents can see and use a phone or tablet that has MKC+ from this site.</p>
+      <section class="agents-panel" aria-label="What adds MKC+ to each agent">
+        <div class="agents-switch" role="group" aria-label="System">
+          <button type="button" data-os="win" aria-pressed="false"><svg aria-hidden="true"><use href="#i-windows"/></svg>Windows</button>
+          <button type="button" data-os="mac" aria-pressed="true"><svg aria-hidden="true"><use href="#i-mac"/></svg>macOS</button>
+          <button type="button" data-os="linux" aria-pressed="false"><svg aria-hidden="true"><use href="#i-linux"/></svg>Linux</button>
+        </div>
+        <div class="choice-for agents-note" id="agents-appimage" hidden>Using the AppImage? Give the agent the AppImage's own file in place of <b>/usr/libexec/mkcplus/mkcplusd</b>, and <b>--engine mcp</b> in place of <b>mcp</b>. The Claude Code plugin is for the .deb and .rpm.</div>
+        <div class="choice-list" id="agents-list"></div>
+      </section>
+    </main>
+    <footer class="p-footer">
+      <span class="p-footer-brand">MKC+ · free beta</span>
+      <nav aria-label="Site">
+        <a href="./questions.html">Questions</a>
+        <a href="./terms.html">Terms</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="https://github.com/arxidaki/mkcplus-releases/releases" rel="noopener">Changelog</a>
+        <a href="https://github.com/arxidaki" rel="noopener">Contact</a>
+      </nav>
+    </footer>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // The MKC+ engine on each system: where the installer puts it (apps/mkcplus-setup's
+  // %ProgramFiles%\MKC+, the Mac's app bundle, scripts/package-linux.sh for the .deb and
+  // .rpm), and `mcp` the argument that makes it an agent's MCP server (apps/mkcplusd).
+  // How each agent takes it was read from each agent's own documentation on 2026-11-16.
+  const path = { win: 'C:\\Program Files\\MKC+\\mkcplusd.exe', mac: '/Applications/MKC+.app/Contents/MacOS/mkcplusd', linux: '/usr/libexec/mkcplus/mkcplusd' };
+  // The Claude Code plugin of each system (agents/claude-code, published in the public
+  // releases repository): the same engine and argument, named once in its .mcp.json.
+  const plugin = { win: 'mkcplus-windows', mac: 'mkcplus-macos', linux: 'mkcplus-linux' };
+  const json = text => JSON.stringify(text);
+  // A path as one word of a shell command: quoted where it has a space.
+  const word = p => (/\s/.test(p) ? '"' + p + '"' : p);
+  // A path in YAML or TOML: single quotes keep a Windows backslash as it is.
+  const literal = p => (p.includes('\\') ? "'" + p + "'" : '"' + p + '"');
+  const block = p => '{\n  "mcpServers": {\n    "mkcplus": {\n      "command": ' + json(p) + ',\n      "args": ["mcp"]\n    }\n  }\n}';
+  // Command Prompt keeps the `--` these lines need, and Windows PowerShell 5.1 drops it
+  // through an npm shim (checked on THERKO, 2026-11-16).
+  const shell = { mac: 'Run in a terminal', linux: 'Run in a terminal', win: 'Run in Command Prompt' };
+  const home = (unix, win) => ({ mac: unix, linux: unix, win: win });
+  const agents = [
+    { name: 'Claude Code', parts: [
+      { where: { mac: 'With the MKC+ plugin: run in a terminal', linux: 'With the MKC+ plugin, for the .deb and .rpm: run in a terminal', win: 'With the MKC+ plugin: run in Command Prompt' },
+        text: (p, os) => 'claude plugin marketplace add arxidaki/mkcplus-releases\nclaude plugin install ' + plugin[os] + '@mkcplus' },
+      { where: { mac: 'Or without the plugin: run in a terminal', linux: 'Or without the plugin: run in a terminal', win: 'Or without the plugin: run in Command Prompt' },
+        text: p => 'claude mcp add --scope user mkcplus -- ' + word(p) + ' mcp' },
+    ] },
+    { name: 'Claude desktop app',
+      where: 'In Settings, Developer, Edit Config, add this to claude_desktop_config.json, then quit Claude and open it again',
+      text: block },
+    { name: 'GitHub Copilot',
+      where: { mac: 'VS Code and the Copilot CLI: run in a terminal, with the Copilot CLI installed', linux: 'VS Code and the Copilot CLI: run in a terminal, with the Copilot CLI installed', win: 'VS Code and the Copilot CLI: run in Command Prompt, with the Copilot CLI installed' },
+      text: p => 'copilot mcp add mkcplus -- ' + word(p) + ' mcp' },
+    { name: 'Codex, ChatGPT desktop app',
+      where: home('Add to ~/.codex/config.toml. The ChatGPT desktop app reads it too: use MKC+ in a Codex conversation', 'Add to %USERPROFILE%\\.codex\\config.toml. The ChatGPT desktop app reads it too: use MKC+ in a Codex conversation'),
+      text: p => '[mcp_servers.mkcplus]\ncommand = ' + literal(p) + '\nargs = ["mcp"]' },
+    { name: 'Cursor, Google Antigravity, JetBrains AI, Junie, Cline, Devin Desktop, Kimi Code',
+      lead: 'Add to each one\'s settings, keeping what is already there:',
+      list: os => [
+        ['Cursor', os === 'win' ? '%USERPROFILE%\\.cursor\\mcp.json' : '~/.cursor/mcp.json'],
+        ['Google Antigravity', os === 'win' ? '%USERPROFILE%\\.gemini\\config\\mcp_config.json' : '~/.gemini/config/mcp_config.json'],
+        ['JetBrains AI Assistant', 'Settings, Tools, AI Assistant, Model Context Protocol (MCP), Add'],
+        ['Junie', os === 'win' ? '%USERPROFILE%\\.junie\\mcp\\mcp.json' : '~/.junie/mcp/mcp.json'],
+        ['Cline', 'MCP Servers, Configure, Configure MCP Servers'],
+        ['Devin Desktop (Windsurf)', os === 'win' ? '%APPDATA%\\devin\\mcp_config.json' : '~/.config/devin/mcp_config.json'],
+        ['Kimi Code', os === 'win' ? '%USERPROFILE%\\.kimi-code\\mcp.json' : '~/.kimi-code/mcp.json'],
+      ],
+      text: block },
+    { name: 'opencode', where: shell,
+      text: p => 'opencode mcp add mkcplus -- ' + word(p) + ' mcp' },
+    { name: 'DeepSeek Harness',
+      where: home('Add to the list in ~/.dsh/cordis.patch.yml, then start a new session', 'Add to the list in %USERPROFILE%\\.dsh\\cordis.patch.yml, then start a new session'),
+      text: p => "- insert:\n    - id: mkcplus\n      name: '@deepseek-ai/dsh-mcp-client'\n      config:\n        serverName: mkcplus\n        transport: stdio\n        command: " + literal(p) + "\n        args: ['mcp']" },
+    { name: 'OpenClaw', where: 'Run in a terminal, with the OpenClaw Gateway stopped',
+      text: p => 'openclaw mcp add mkcplus --command ' + word(p) + ' --arg mcp' },
+    { name: 'Hermes Agent',
+      where: home('Add to ~/.hermes/config.yaml, then start Hermes again', 'Add to %USERPROFILE%\\.hermes\\config.yaml, then start Hermes again'),
+      text: p => 'mcp_servers:\n  mkcplus:\n    command: ' + literal(p) + '\n    args: ["mcp"]' },
+    { name: 'Kilo Code',
+      where: home('Add to ~/.config/kilo/kilo.jsonc, or in Settings, MCP, Add Server, Local', 'Add to %USERPROFILE%\\.config\\kilo\\kilo.jsonc, or in Settings, MCP, Add Server, Local'),
+      text: p => '{\n  "mcp": {\n    "mkcplus": {\n      "type": "local",\n      "command": [' + json(p) + ', "mcp"],\n      "enabled": true\n    }\n  }\n}' },
+    { name: 'Qwen Code', where: 'Run in a terminal',
+      text: p => 'qwen mcp add -s user mkcplus ' + word(p) + ' mcp' },
+    { name: 'TRAE',
+      where: { mac: 'In Settings, MCP, Add, Create Manually, paste this', linux: 'In Settings, MCP, Add, Create Manually, paste this', win: 'In Settings, MCP, Add, Create Manually, paste this. TRAE takes no space in the path, so this is its short form' },
+      text: (p, os) => block(os === 'win' ? 'C:\\PROGRA~1\\MKC+\\mkcplusd.exe' : p) },
+    { name: 'CodeBuddy Code', where: shell,
+      text: p => 'codebuddy mcp add --scope user mkcplus -- ' + word(p) + ' mcp' },
+    { name: 'Other agents',
+      where: 'Any agent that takes a local (stdio) MCP server: give it this program and this one argument',
+      text: p => 'Command    ' + p + '\nArguments  mcp' },
+  ];
+
+  const list = document.getElementById('agents-list');
+  const esc = text => text.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // Every way of adding one agent: one, or Claude Code's two.
+  const ways = agent => agent.parts || [agent];
+  const code = (agent, index) => '<div class="agent-code"><pre></pre><button type="button" class="agent-copy" aria-label="Copy for ' + esc(agent.name) + (index ? ', without the plugin' : '') + '"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></div>';
+  list.innerHTML = agents.map((agent, index) =>
+    '<div class="agent" data-index="' + index + '"><h2>' + esc(agent.name) + '</h2>' +
+    (agent.list
+      ? '<div class="choice-for">' + esc(agent.lead) + '</div><ul class="agent-where"></ul>' + code(agent, 0)
+      : ways(agent).map((_, way) => '<div class="choice-for"></div>' + code(agent, way)).join('')) +
+    '</div>'
+  ).join('');
+
+  let os = /Win/.test(navigator.platform) ? 'win' : /Mac/.test(navigator.platform) ? 'mac' : 'linux';
+  const systems = [...document.querySelectorAll('.agents-switch button')];
+  const rows = [...list.querySelectorAll('.agent')];
+  function show() {
+    systems.forEach(one => one.setAttribute('aria-pressed', String(one.dataset.os === os)));
+    document.getElementById('agents-appimage').hidden = os !== 'linux';
+    rows.forEach(row => {
+      const agent = agents[row.dataset.index];
+      const texts = [...row.querySelectorAll('pre')];
+      if (agent.list) {
+        row.querySelector('.agent-where').innerHTML = agent.list(os).map(([name, where]) => '<li><b>' + esc(name) + '</b> ' + esc(where) + '</li>').join('');
+        texts[0].textContent = agent.text(path[os], os);
+        return;
+      }
+      const lines = [...row.querySelectorAll('.choice-for')];
+      ways(agent).forEach((way, index) => {
+        lines[index].textContent = typeof way.where === 'string' ? way.where : way.where[os];
+        texts[index].textContent = way.text(path[os], os);
+      });
+    });
+  }
+  show();
+  systems.forEach(one => one.addEventListener('click', () => { os = one.dataset.os; show(); }));
+  list.addEventListener('click', async event => {
+    const copy = event.target.closest('.agent-copy');
+    if (!copy) return;
+    const icon = copy.querySelector('use');
+    try { await navigator.clipboard.writeText(copy.closest('.agent-code').querySelector('pre').textContent); } catch { return; }
+    icon.setAttribute('href', '#i-check');
+    setTimeout(() => icon.setAttribute('href', '#i-copy'), 1400);
+  });
+});
+</script>
+</body>
+</html>
